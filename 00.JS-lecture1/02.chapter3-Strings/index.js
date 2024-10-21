@@ -27,7 +27,7 @@ console.log(firstName.indexOf('i'));//give me the first index of occurance i
 console.log(firstName.lastIndexOf('i'));//gives back the index of last occurance of i
 
 //some complicated string methods
-let email="max@gmail.com";
+let email="m@x@gmail.com";
 // let sliceEmail=email.slice(start:0,end:5)//this will slice the string till 0 to end-1 ie 0 to 4
 let sliceEmail=email.slice(0,5);
 console.log(sliceEmail);
@@ -38,3 +38,11 @@ console.log(subString);
 
 let replaceWord=email.replace('m','w');//this will replace the very first inctance of m with w
 console.log(replaceWord);
+
+//include://which check if there is a character present in that string or not and returns true or false
+console.log(email);
+console.log(email.includes("@"));
+//we  can even get the index of the  character via indexOf function will give me the first occurance of that character
+console.log(email.indexOf("@"));
+//for last occurance of that character we have lastIndexOf
+console.log(email.lastIndexOf("@"));
