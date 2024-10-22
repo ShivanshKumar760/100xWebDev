@@ -10,7 +10,11 @@
 
 const fruits = ['apple', 'banana', 'cherry'];
 console.log(fruits[0].toUpperCase());
-const uppercasedFruits = fruits.map((fruit) => {
-    return fruit.toUpperCase();
-});
+//if our arrow function is of one line and we are deciding not to give curly braces we can just pass the statement without return 
+// const uppercasedFruits = fruits.map((fruit) =>fruit.toUpperCase());
+
+
+//but if we decide to give curly braces we have to return it 
+const uppercasedFruits = fruits.map((fruit) =>{return fruit.toUpperCase();});
+
 console.log(uppercasedFruits); // ['APPLE', 'BANANA', 'CHERRY']

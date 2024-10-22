@@ -9,7 +9,7 @@
 
 const numbers = [1, 2, 3, 4, 5];
 
-const evenNumbers = numbers.filter(function(num){if(num % 2 === 0){return num}} );//we  unlike map  in we are not attaching any function to
+const evenNumbers = numbers.filter(function(num){if(num % 2 === 0){return true}} );//we  unlike map  in we are not attaching any function to
 //element but checking if element of that array passes that condition if that number do pass the condition it will be added to evenNumber array
 console.log(evenNumbers); // [2, 4]
 
