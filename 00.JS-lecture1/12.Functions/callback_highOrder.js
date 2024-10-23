@@ -62,13 +62,13 @@ console.log(resultArray);
 let resultArray=arr.map((Element)=>{Element=Element*2;return Element+2;});--here u may say hmm we just discussed above that when
 we pass a call back we should invoke it directly but here
 let resultArray=arr.map((Element)=>{
-    Element=Element*2;return Element+2;//forget about invoking it immediately we have defined it inside a high order function
-    //will it not ger executed immdeately ans is no cause we have defined a anonymous arrow function
+    Element=Element*2;return Element+2;});//forget about invoking it immediately we have defined it inside a high order function
+    //will it not get executed immdeately ans is no cause we have defined a anonymous arrow function
     //inside our high order function map() but we haven't call it in order to call a function suppose my function name is 
     //sayHello we need to add this open and closing parenthesis () untill we don't do that it wont get invoke
     //similarly when we play with a anonymous function unitl we dont attach these () using iife(Immediately Invoked Function Expressions)
     //they wont get execute insted there function defination will go into map() function define in array class
-});*/
+*/
 
 //lets try to re-create map function to understand underlying logic
 
