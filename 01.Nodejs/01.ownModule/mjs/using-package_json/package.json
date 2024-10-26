@@ -1,0 +1,14 @@
+{
+    "name": "my-esm-project",
+    "version": "1.0.0",
+    "main": "importLogger.js",//starting file that is when node is typed which file to run
+    "description": "A simple Node.js project using ESM",
+    "type": "module",//type of js that is common or module 
+
+
+    "scripts": {
+        "start": "node importLogger.js",//script to run using npm so npm start 
+        //will run the command node importLogger.js
+        
+    }
+}

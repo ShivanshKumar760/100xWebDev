@@ -1,0 +1,24 @@
+ECMAScript Modules (MJS)
+Definition: ECMAScript Modules (ESM) is the official module format introduced 
+in ES6 (ECMAScript 2015). It allows for the use of import and export statements to 
+manage module functionalities.
+
+Syntax:
+
+Importing:
+import { myFunction } from './myModule.mjs';
+
+
+Exporting:
+
+export const myFunction = () => { /*...*/ };
+
+Usage: ESM is designed to work in both browser and server environments,
+supporting asynchronous loading of modules. This allows for better performance 
+in web applications where modules can be loaded in parallel.
+
+File Extension: ECMAScript modules typically use the .mjs extension or can 
+also be specified in .js files if the type is set to module in the package.json.
+
+So if we are not using package.json to specify the file type in order for us to import 
+and export we have to actually use the extension of .mjs

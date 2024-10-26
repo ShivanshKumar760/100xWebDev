@@ -1,0 +1,74 @@
+When working with ECMAScript Modules (ESM) in Node.js, you can utilize the .mjs file 
+extension along with a specific configuration in your package.json. Here's how to set 
+up and use package.json for a project that uses .mjs files:
+
+Using .mjs Files
+File Extension: .mjs is used to indicate that a file is an ECMAScript Module. This allows 
+you to use the import and export syntax.
+
+Setting Up package.json: To inform Node.js that you want to use ESM, you can 
+set the type field in your package.json.
+
+Example of package.json for ESM
+Here's a sample package.json file configured for a project using .mjs:
+
+json
+Copy code
+{
+   "name": "my-esm-project",
+   "version": "1.0.0",
+   "description": "A simple Node.js project using ESM",
+   "type": "module", // Enables ESM syntax for .js files
+   "scripts": {
+       "start": "node index.mjs",
+       "test": "jest"
+   },
+   "dependencies": {
+       "express": "^4.17.1"
+   },
+   "devDependencies": {
+       "jest": "^26.6.3"
+   },
+   "author": "Your Name",
+   "license": "MIT"
+}
+Key Components Explained
+
+"type": "module": This setting allows you to use ESM syntax in files with the .js 
+extension. If you're exclusively using .mjs files, this setting is not strictly 
+necessary, but it's good practice for clarity.
+
+Scripts: The start script indicates how to run the main file of your application 
+(in this case, index.mjs).
+
+Dependencies: Just like in CommonJS projects, you can specify 
+dependencies your project requires.
+
+Example of an ESM Module (index.mjs)
+Here’s a simple example of an ESM module in Node.js:
+
+
+// index.mjs
+import express from 'express';
+
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello, ESM World!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+Running Your ESM Project
+Install Dependencies: Run the following command in your terminal:
+
+bash
+
+npm install
+Start the Server: Use the defined script to start your application:
+
+bash
+npm start
