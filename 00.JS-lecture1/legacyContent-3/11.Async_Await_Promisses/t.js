@@ -67,7 +67,7 @@ console.log(promiseHolder);
 
 
 let d=new Date();
-console.log(d);
+console.log(d+"this is data logger");
 console.log(d.getDate());
 promiseHolder.then((data)=>{console.log(data)});
 console.log(promiseHolder);
