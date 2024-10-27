@@ -1,0 +1,48 @@
+In ES modules (using `.mjs` files or with `"type": "module"` in `package.json`), 
+`__filename` and `__dirname` are not available by default as they are in CommonJS. 
+However, you can achieve similar functionality using the `import.meta` object and the 
+`path` module.
+
+### Accessing File and Directory Names in ES Modules
+
+1. **`import.meta.url`**: This provides the URL of the current module, which 
+can be used to derive the file path.
+
+2. **Using `path` Module**: You can use Node.js's built-in `path` module to 
+manipulate and construct paths.
+
+### Example
+
+Here's how to simulate `__filename` and `__dirname` in an ES module:
+
+```javascript
+// example.mjs
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Get the current file path
+const __filename = fileURLToPath(import.meta.url);
+
+// Get the directory name
+const __dirname = dirname(__filename);
+
+console.log('Filename:', __filename);
+console.log('Directory Name:', __dirname);
+```
+
+### Explanation
+
+- **`import.meta.url`**: This provides the URL of the current module. 
+You convert it to a file path using `fileURLToPath`.
+  
+- **`dirname`**: The `dirname` function from the `path` module is used to 
+get the directory name from the file path.
+
+### Summary
+
+- In ES modules, `__filename` and `__dirname` are not automatically provided, 
+but you can replicate their functionality using `import.meta.url` along with the `path` 
+module.
+
+- This allows you to access the current file and directory information similar to how 
+you would in CommonJS.

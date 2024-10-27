@@ -1,0 +1,54 @@
+In CommonJS modules in Node.js, `__filename` and `__dirname` are 
+global variables that provide information about the current module's file path and 
+directory. Here’s how they work:
+
+### 1. `__filename`
+
+- **Description**: This variable contains the absolute path to the current module file.
+- **Usage**: You can use `__filename` to get the full path to the file, which can be 
+helpful for logging, resolving paths, or for other file operations.
+
+**Example**:
+```javascript
+// example.js
+console.log(__filename); // Outputs the full path to example.js
+```
+
+### 2. `__dirname`
+
+- **Description**: This variable contains the absolute path to the directory that 
+contains the current module file.
+- **Usage**: You can use `__dirname` to construct paths relative to the current 
+file, which is useful for loading files or modules that are in the same directory or a subdirectory.
+
+**Example**:
+```javascript
+// example.js
+console.log(__dirname); // Outputs the directory path containing example.js
+```
+
+### Example Usage in a Module
+
+Here’s an example demonstrating both `__filename` and `__dirname`:
+
+```javascript
+// example.js
+const path = require('path');
+
+// Log the filename and directory name
+console.log('Filename:', __filename);
+console.log('Directory Name:', __dirname);
+
+// Construct a path to a file in the same directory
+const filePath = path.join(__dirname, 'anotherFile.txt');
+console.log('Path to anotherFile.txt:', filePath);
+```
+
+### Summary
+
+- **`__filename`**: Gives you the complete path to the current module file.
+- **`__dirname`**: Provides the path to the directory containing the current module file.
+
+These variables are useful for working with files and modules, especially when 
+constructing paths relative to the module's location. If you have further questions or 
+need more examples, feel free to ask!
