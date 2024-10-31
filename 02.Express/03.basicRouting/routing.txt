@@ -1,0 +1,21 @@
+A backend routing plug-in is used to route API requests to different backend service URLs 
+by changing the backend service type, URL, path, and parameters in the requests
+
+Routing in backend development is a technology that allows a back-end app to switch 
+between different server-side endpoints based on the requested URL. Many front-end and back-end frameworks use routing internally to invoke 
+different functionality based on the URL and its components
+
+
+Example like google backend provide multiple service like mail,meet,classroom
+each service is accessible through routing where we hit the google sever 
+which is mapped with google.com domain
+
+so www.google.com/endpoint<service>
+
+we we want to use a mail or gmail service we will route our backend to swtich 
+from google main  engine to mailing ending 
+
+www.google.com/gmail
+
+route:/gmail
+endpoint:gmail

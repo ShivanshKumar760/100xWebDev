@@ -41,6 +41,14 @@ const server = createServer((req, res) => {
     req.on('end', () => {
       // Parse the form data (application/x-www-form-urlencoded)
       const parsedData = new URLSearchParams(body);
+      /* 
+      new URLSearchParams(body) is used to parse URL-encoded form data. 
+      It takes the body (a string of encoded parameters) and creates an instance of 
+      URLSearchParams, which allows you to easily access the parameters.
+
+For example, if body contains "name=Shivansh&email=shivansh@example.com",
+ you can do the following:
+      */
       const name = parsedData.get('Name');
       const email = parsedData.get('Age');
 

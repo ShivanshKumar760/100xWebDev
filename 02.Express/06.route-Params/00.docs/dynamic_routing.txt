@@ -1,0 +1,193 @@
+Dynamic Routes
+When you don't know the exact segment names ahead of time and want to 
+create routes from dynamic data, you can use Dynamic Segments that are filled in 
+at request time or prerendered at build time.
+
+
+How Dynamic Routing Works in Express.js?
+Dynamic routing in Express.js allows for creating flexible and customizable routes 
+by incorporating parameters into the route paths. 
+These parameters are placeholders in the route, and their values can vary, enabling
+the server to handle requests based on different input values.
+
+
+1.Define a Dynamic Route with Parameters: When defining a route in Express.js, 
+you can include parameters by specifying a colon followed by the parameter name in 
+the route path. For example:
+
+app.get('/users/:userId', (req, res) => {
+const userId = req.params.userId;
+res.send(`User ID: ${userId}`);
+});
+2.Accessing Parameters in the Route Handler: Inside the route handler function, 
+you can access the parameter values using req.params. In the example above, 
+req.params.userId would contain the value of the userId parameter from the URL.
+
+3.Requesting the Dynamic Route: To request the dynamic route, you would make a 
+GET request to a URL that matches the defined route with the specified parameter. 
+For example, to access the user with ID 123:
+GET /users/123
+
+
+4.Handling the Request: When a request is made to the dynamic route, 
+Express.js matches the URL to the defined route pattern and extracts the parameter value. 
+In this case, it would extract the userId from the URL.
+
+5.Using the Parameter Value: The parameter value extracted from the URL can then be used 
+within the route handler to customize the server’s response based on the parameter value.
+
+app.get('/users/:userId', (req, res) => {
+const userId = req.params.userId;
+res.send(`User ID: ${userId}`);
+});
+In this example, the server responds with “User ID: 123” for the request to “/users/123”.
+
+Dynamic routing in Express.js is powerful for building APIs and web applications 
+where different routes are needed to handle various operations and functionalities 
+based on user input or other contextual information.
+
+
+Suppose we have a database with user record for ease of example lets take a inmemory
+database record
+
+let userData=[
+{id:1,userName:Shivansh,userAge:19},
+{id:2,userName:Alex,userAge:19},
+{id:3,userName:Aaryansh,userAge:19},
+{id:4,userName:Rishi,userAge:19},
+{id:5,userName:Mahima,userAge:19},
+{id:6,userName:Chitra,userAge:19},
+{id:7,userName:Upasana,userAge:19}
+]
+
+now here we have total of 7 user 
+so if we have to access each user data we can create route for each user 
+
+app.get("/Shivansh",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+app.get("/Alex",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+app.get("/Rishi",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+
+app.get("/Aaryansh",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+app.get("/Chitra",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+app.get("/Mahima",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+app.get("/Upasana",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.url===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+so as we can see in order to get each user data we had to create 7 route 
+and if there were 1000 user or million then it will become a disaster to write 
+every route and plus it wont be clean code and 
+
+so that's why we use dynamic Routing
+
+app.get("/:user-name",(req,res)=>{
+    let len=userData.length;
+    let getRecord;
+    for(let i=0;i<len;i++)
+    {   
+        if(req.param.user-name===userData[i].userName)
+        {
+            getRecord=userData[i];
+            break;
+        }
+    }
+    res.json(getRecord);
+});
+
+
+Now all we have to do is go to browser and which ever userData we need
+we can type localhost:3000/Shivansh or localhost:3000/Rishi it will give us the output

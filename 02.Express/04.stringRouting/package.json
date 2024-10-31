@@ -1,0 +1,16 @@
+{
+  "name": "04.stringrouting",
+  "version": "1.0.0",
+  "description": "string patter based routing",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon index.js"
+  },
+  "author": "shivansh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
