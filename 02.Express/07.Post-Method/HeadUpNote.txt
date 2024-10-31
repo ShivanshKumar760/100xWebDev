@@ -1,0 +1,7 @@
+So to use post route basically we need either api tool like thunder client or rapid api,
+postman which will hit our endpoint with post method:
+
+or we need form / html form which has post method to send 
+data to a server and then server process that data apply some functionality onto
+it and respond and browser as client by default send GET request to any route 
+so we need api tool or form and in form also we need to specify method

@@ -1,0 +1,17 @@
+urlencoded means
+URL-encoded refers to the process of converting characters into a format that 
+can be safely transmitted over the Internet. It encodes special characters as a 
+series of percent signs and hexadecimal digits to ensure data is passed accurately
+without misinterpretation. For example, a space is represented as %20
+
+
+When a form is URL-encoded, the data from the form is converted into a string of 
+key-value pairs, which are then encoded into a format that can be sent over the internet. 
+Each key-value pair is separated by an ampersand (&), and within each pair, the key and 
+value are separated by an equals sign (=). Special characters are encoded using 
+percent-encoding.
+
+For example, if a form has fields for name and age, with values John Doe and 25, 
+respectively, the URL-encoded string might look like this:
+
+name=John%20Doe&age=25
