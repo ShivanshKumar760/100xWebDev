@@ -1,0 +1,73 @@
+So when a client sends a get request the response client gets is a read-only response
+that's client cannot manipulated data onto the server with get request 
+
+like with post method we can manipulate the database by creating new object based 
+on client posted data 
+
+but sometimes client may want to recive a data in a certain way suppose given a list
+of user client only wants data in a sorted manner that they should be sorted in ascending
+order of there name or decending order of ther name
+
+so client can only send get request but it's upto us programmer to hnadle
+that get request and handle it on server and response with the client required
+data 
+
+Now but as a programmer we need a way to find out in which manner does the 
+client need's the data to be sorted that is ascending or decending and for that we 
+use query-parameter 
+
+there are key and value pair initiated with question mark(?)
+
+suppose we have url www.example.com/user?id=1
+
+here id is a query parameter with value 1 which basically here in above url mean
+from www.example.com get me user with id=1
+
+so if we need to know as a developer what kind of sorting user/clinet want now either 
+we can genrate a form to get user input but but building just a form for sorting is 
+not optimal and as a sepration of concern form should be used only with post method
+
+so here we can use query parameter to pass additional info so that server can 
+process response:
+
+
+localhost:3000/getUser?sort=asc or localhost:3000/getUser>sort=dsc
+
+
+we can ever use query parameter to pass data to post method route but again since query parameter
+are sent by browser and they are not binded with post or get method like a form does so we 
+will need a api tool to fire up the endpoint with post request and query
+
+
+A query parameter is a key-value pair that is added to the end of a URL to provide extra 
+information to a web server when making requests. They are a vital part of the URL and 
+are used to define specific actions or content based on the data that is being passed. 
+
+
+
+The query component is indicated by the first ? in a URI. "Query string" might be a 
+synonym (this term is not used in the URI standard).
+
+Some examples for HTTP URIs with query components:
+
+http://example.com/foo?bar
+http://example.com/foo/foo/foo?bar/bar/bar
+http://example.com/?bar
+http://example.com/?@bar._=???/1:
+http://example.com/?bar1=a&bar2=b
+
+
+
+
+Both are the ways of passing data in GET/POST and other requests. 
+Below are some differences.
+
+(Route or Path) Parameters:
+https://localhost:3000/user/5896544
+
+access from backend: request.params.userId = 5896544
+
+(Query or URL Query or Query String) Parameters:
+https://localhost:3000/user?userId=5896544
+
+access from backend: request.query.userId = 5896544
