@@ -16,7 +16,7 @@ let userData=[
 app.use(express.json());//will parse the the incomming json data when ever we hit a new 
 //url
 
-app.use(express.urlencoded({extended:true}));
+
 app.get("/",(req,res)=>{
     res.status(200).send("<h1>Welcome to Home page</h1>");
 });
@@ -55,6 +55,7 @@ app.post("/createUser",(req,res)=>{
     //a data carried request to /createUser route with post method cause we are 
     //processing incomming data 
     let {id,userName,userAge}=req.body;
+    console.log(`this is the request body`);
     console.log(req.body);
     console.log(id,userName,userAge)
     id=parseInt(id);
