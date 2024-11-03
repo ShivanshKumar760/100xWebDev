@@ -1,6 +1,40 @@
 import express from "express";
 import {fileURLToPath} from "url";
 import { dirname } from "path";
+function fetchIndexPar(req,res,next)
+{
+    const {params:{id}}=req;
+    const parsedID=parseInt(id);
+    let fetchIndex;
+        //check if the enter param is a id or a string
+    if(isNaN(parsedID))
+    {
+        return res.status(400).send("Id is not number");
+        //just in case below code does not get executed 
+        //give a return statment;
+    }
+    for(let i=0;i<users.length;i++)
+    {
+        if(parsedID===users[i].id)
+        {
+            fetchIndex=i;
+            break;
+        }
+        else{
+            fetchIndex=-1
+        }
+    }
+    if(fetchIndex===-1)
+    {
+        return res.status(400).send("Invalid User id");
+        //just in case below code does not get executed 
+        //give a return statment;
+       
+
+    }   
+    req.fetchIndex=fetchIndex;
+    next();
+}
 const app=express();
 const port=3000;
 const __filename=fileURLToPath(import.meta.url);
@@ -158,102 +192,30 @@ app.post("/createUser",(req,res)=>{
     res.status(201).send("User Created");
 });
 
-app.put("/update/:id",(req,res)=>{
+app.put("/update/:id",fetchIndexPar,(req,res)=>{
     console.log(req.body);
     console.log(req.params);
-    const {body,params:{id}}=req;
-    const parsedID=parseInt(id);
-    let fetchIndex;
-        //check if the enter param is a id or a string
-    if(isNaN(parsedID))
-    {
-        return res.status(400).send("Id is not number");
-        //just in case below code does not get executed 
-        //give a return statment;
-    }
-    for(let i=0;i<users.length;i++)
-    {
-        if(parsedID===users[i].id)
-        {
-            fetchIndex=i;
-            break;
-        }
-        else{
-            fetchIndex=-1
-        }
-    }
-    if(fetchIndex===-1)
-    {
-        res.status(400).send("Invalid User id");
-        //just in case below code does not get executed 
-        //give a return statment;
-        return ;
+    const {body,fetchIndex}=req;
+    let newRecord={id:users[fetchIndex].id,...body};
+    users[fetchIndex]=newRecord;
+    res.status(201).send("User Updated");
 
-    }
-    else{
-        let newRecord={id:parsedID,...body};
-        users[fetchIndex]=newRecord;
-        res.status(201).send("User Updated");
-    }
 });
 
 
 //patch method:
 
-app.patch("/patch/user/:id",(req,res)=>{
-    const{body,params:{id}}=req;
-    const parsedID=parseInt(id);
-    let fetchIndex;
-    for(let i=0;i<users.length;i++)
-    {
-        if(parsedID===users[i].id)
-        {
-            fetchIndex=i;
-            break;
-        }
-        else{
-            fetchIndex=-1
-        }
-    }
-    if(fetchIndex===-1)
-    {
-        res.status(400).send("Invalid User id");
-        //just in case below code does not get executed 
-        //give a return statment;
-        return ;
-
-    }
+app.patch("/patch/user/:id",fetchIndexPar,(req,res)=>{
+    const{body,fetchIndex}=req;
     users[fetchIndex]={...users[fetchIndex],...body};
     res.status(201).send("Update attribute")
 });
 
 //delete method to delete user record from db
 
-app.delete("/delete/user/:id",(req,res)=>{
-    const {params:{id}}=req;
-    console.log(id);
-    const parsedID=parseInt(id);
-    console.log(parsedID);
-    let fetchIndex;
-    for(let i=0;i<users.length;i++)
-    {
-        if(parsedID===users[i].id)
-        {
-            fetchIndex=i;
-            break;
-        }
-        else{
-            fetchIndex=-1
-        }
-    }
-    if(fetchIndex===-1)
-    {
-        res.status(400).send("Invalid User id");
-        //just in case below code does not get executed 
-        //give a return statment;
-        return ;
-
-    }
+app.delete("/delete/user/:id",fetchIndexPar,(req,res)=>{
+    const {fetchIndex}=req;
+    console.log(users[fetchIndex].id);
     users.splice(fetchIndex,1);//Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 
     // @param start — The zero-based location in the array from which to start removing elements.
