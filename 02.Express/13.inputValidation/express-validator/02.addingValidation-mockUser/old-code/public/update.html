@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="updateUserForm">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        
+        <button type="submit">Update User</button>
+    </form>
+</body>
+<script src="./req.js" defer></script>
+<!-- this below code will make our js visible in the browser and we dont want client 
+    to see the buisness logic of our code  so it's better to keep it in seprate file -->
+<!-- <script>
+    document.getElementById('updateUserForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    const userId = document.getElementById('userId').value;
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+
+    fetch(`/update/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, age }),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('User updated:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+</script> -->
+</html>
