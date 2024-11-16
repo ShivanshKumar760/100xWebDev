@@ -1,0 +1,16 @@
+{
+  "name": "02.tags",
+  "version": "1.0.0",
+  "description": "This will be demo express server to test the ejs tag",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shivansh",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
+  }
+}

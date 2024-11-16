@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%=data.title%></h1>
+    <p>Current second:<%=data.seconds%></p>
+    <ul>
+        <% if(locals.data) %>
+        <%{%>
+            <% data.items.forEach(element => {%>
+                <li><%= element %></li>
+            <%});%>
+        <%}%>
+    </ul>
+    <%- data.htmlContent %>
+</body>
+<!-- include tag is generallyy given with escape tag < % - % > to render the 
+html in it  -->
+<%-include("footer.ejs")%>
+</html>

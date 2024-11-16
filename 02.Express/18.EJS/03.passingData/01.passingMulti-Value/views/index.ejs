@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Show</title>
+</head>
+<body>
+    <h1>Enter Your First Name and Last Name plus age it will be visible on the site:</h1>
+    <form action="/post" method="post">
+        <label for="First Name">First Name:</label>
+        <input type="text" name="firstName">
+        <br><br>
+        <label for="Last Name">Last Name:</label>
+        <input type="text" name="lastName">
+        <br><br>
+        <label for="Age">Age:</label>
+        <input type="text" name="age">
+        <br><br>
+        <input type="submit" value="submit">
+    </form>
+    <% if(locals.firstName && locals.lastName && locals.age) {%>
+        <p>First Name is :<%= firstName %></p>
+        <p>Last Name is :<%= lastName %></p>
+        <p>age is :<%= age %></p>
+    <% } %>
+</body>
+</html>
