@@ -188,6 +188,7 @@ app.put("/update/:id",(req,res)=>{
 
 app.patch("/patch/user/:id",(req,res)=>{
     const{body,params:{id}}=req;
+    console.log(body)
     const parsedID=parseInt(id);
     let fetchIndex;
     for(let i=0;i<users.length;i++)
