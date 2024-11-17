@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+</head>
+<body>
+    <h1>Welcome to simple Calculator</h1>
+    <h2>Steps are:</h2>
+    <ol>
+        <li>Enter Height</li>
+        <li>Enter Weight</li>
+    </ol>
+    <h3> formula is : bmi=Weight/Height*Height</h3>
+    <form action="/calcBmi" method="post">
+        <label for="Height">Height</label>
+        <input type="text" name="height">
+        <label for="Weight">Weight:</label>
+        <input type="text" name="weight">
+        <input type="submit" value="submit">
+    </form>
+    <% if(locals.bmi){ %>
+        <h4>Result is :<%= bmi %></h2>
+    <%}%>
+</body>
+</html>

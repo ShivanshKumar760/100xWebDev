@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+</head>
+<body>
+    <h1>Welcome to simple Calculator</h1>
+    <p>List of operation are:</p>
+    <ol>
+        <li>Addition:+</li>
+        <li>Subtraction:-</li>
+        <li>Multiplication:*</li>
+        <li>Division:/</li>
+        <li>Remainder:%</li>
+    </ol>
+    <form action="/calc" method="post">
+        <label for="Value1">Value 1:</label>
+        <input type="number" name="val1">
+        <label for="Value2">Value 2:</label>
+        <input type="number" name="val2">
+        <label for="Operation">Operation:</label>
+        <input type="text" name="opr">
+        <input type="submit" value="submit">
+    </form>
+    <% if(locals.res){ %>
+        <h2>Result is :<%= res %></h2>
+    <%}%>
+
+    <a href="/bmi">BMI</a>
+</body>
+</html>
