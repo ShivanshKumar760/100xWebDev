@@ -11,7 +11,6 @@ function App() {
   }
   return (
     <>
-    <Navbar/>
     <div className='greet'>
         <h1>Hey,{greetingObject.greet} and time is :{greetingObject.time}</h1>
     </div>
