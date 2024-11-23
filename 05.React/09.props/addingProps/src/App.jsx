@@ -4,8 +4,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 function App() {
   let [user,setUser]=useState(true);//hook added to control state of variable 
- 
-//useState
+ //useState
   let greetingObject={greet:"Welcome to site",time:new Date().toLocaleTimeString(
       'en-IN', 
       { timeZone: 'Asia/Kolkata', hour12: true, hour: 'numeric', minute: 'numeric'})};
@@ -25,6 +24,7 @@ function App() {
     </div>
      <div className='content'>
         <Home/>
+        <br/>
         <button onClick={handleClick}>Click me to to toggle</button>
     </div>
     </>)};
