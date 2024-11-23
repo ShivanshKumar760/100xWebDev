@@ -1,0 +1,17 @@
+import { useEffect, useState } from 'react';
+// import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+function App() {
+
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setSeconds(seconds => seconds + 1), 1000);
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []); // Empty array as a second argument means this effect runs only once (after the initial render)
+
+  return <p>Timer: {seconds}</p>;
+}
