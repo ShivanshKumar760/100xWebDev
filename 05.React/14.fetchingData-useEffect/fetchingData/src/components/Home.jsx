@@ -30,5 +30,4 @@ const Home=()=>{let [blogs,setBlogs]=useState(null);
            {blogs && <BlogList blogsArray={blogs} handleDelete={handleDelete} title="All Blogs"/>}
         </div>);
 };
-
 export default Home;
