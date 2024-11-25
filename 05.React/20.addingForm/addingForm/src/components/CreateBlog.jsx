@@ -1,10 +1,8 @@
 import { useState } from "react";
-
 const Create = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('mario');
-
   return (
     <div className="create">
       <h2>Add a New Blog</h2>
@@ -30,7 +28,5 @@ const Create = () => {
         <p>{author}</p>
       </form>
     </div>
-  );
-}
- 
+  );}
 export default Create;
