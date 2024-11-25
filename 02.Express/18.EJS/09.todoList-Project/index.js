@@ -29,7 +29,10 @@ app.post("/post",(req,res)=>{
     res.redirect("/");
 });
 app.post("/patchTodo",(req,res)=>{
-    res.status(200).render("patch");
+    console.log(req.body);
+    const {id}=req.body;
+    console.log(id);
+    res.status(200).render("patch",{id:id});
 });
 app.patch("/patch/:id",(req,res)=>{
     const{body,params:{id}}=req;

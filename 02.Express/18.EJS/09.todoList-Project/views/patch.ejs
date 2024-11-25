@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/patch.css"> 
 </head>
 <body>
     <form id="patchTodoForm">
-        <label for="todoId">Todo ID:</label>
-        <input type="text" id="todoId" name="todoId" required>
+        <input id="todoId" name="todoId" required type="hidden" value="<%= id %>">
         <label for="Attribute">Attribute</label>
         <input type="text" id="attr" name="Attribute" required>
         
