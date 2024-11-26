@@ -6,14 +6,14 @@ import "./App.css";
 import notes from '../data/NoteData';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <Header/>
-      <Notes note={{id:0,title:"My note",content:"Test note this is"}}/>
+      {/* <Notes note={{id:0,title:"My note",content:"Test note this is"}}/> */}
       {notes.map((noteElement)=>{
-        return(<Notes note={noteElement}/>);})}
+        console.log(noteElement.key);
+        return(<Notes key={noteElement.key} note={noteElement}/>);})}
       <Footer/>
     </>
     

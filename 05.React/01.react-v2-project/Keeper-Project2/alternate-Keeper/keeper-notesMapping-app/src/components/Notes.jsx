@@ -3,7 +3,7 @@ const Notes=(props)=>{
     const Title=note.title;
     const Content=note.content;
     return(
-        <div className="note" key={note.id}>
+        <div className="note" >
                 <h1>{Title}</h1>
                 <p>{Content}</p>
         </div>);
