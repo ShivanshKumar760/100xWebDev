@@ -17,6 +17,7 @@ function App() {
       if(!user)//false-->true state
       {return user=true;}
       else{return !user;}});}
+  alert("Hello");
   return (<>
     <Navbar/>
     <div className='greet'>
