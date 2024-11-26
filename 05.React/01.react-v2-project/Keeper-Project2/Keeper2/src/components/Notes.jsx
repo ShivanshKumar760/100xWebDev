@@ -1,11 +1,14 @@
-const Notes=()=>{
-
+const Notes=(props)=>{
+    const {noteArray}=props;
     return(
-        <div className="note">
-            <h1>Title</h1>
-            <p>Content</p>
-        </div>    
-    );
+        noteArray.map((noteElement)=>{
+        return(
+        <div className="note" key={noteElement.id}>
+                <h1>{noteElement.title}</h1>
+                <p>{noteElement.content}</p>
+        </div>);})
+        );
 };
+
 
 export default Notes;

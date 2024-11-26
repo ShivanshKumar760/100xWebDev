@@ -4,7 +4,6 @@ import Footer from './components/footer';
 import Notes from './components/Notes';
 import "./App.css";
 import notes from '../data/NoteData';
-// import notes from '../data/NoteData';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +11,9 @@ function App() {
   return (
     <>
       <Header/>
-      <Notes noteArray={notes}/>
+      <Notes note={{id:0,title:"My note",content:"Test note this is"}}/>
+      {notes.map((noteElement)=>{
+        return(<Notes note={noteElement}/>);})}
       <Footer/>
     </>
     
