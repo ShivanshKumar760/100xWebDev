@@ -1,3 +1,5 @@
+import TodoItem from "./TodoItem";
+
 const List=(props)=>{
     const {todo}=props;
     console.log(todo);
@@ -5,7 +7,7 @@ const List=(props)=>{
     <div>
         <ul>
           {todo.map((todoItem,index) => (
-            <li key={index}>{todoItem}</li>
+            <TodoItem key={index} todoItem={todoItem}/>
           ))}
         </ul>
       </div>
