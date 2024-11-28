@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs")%>
+<h1>To-Do List</h1> 
+<!-- <form id="todo-form" action="/post" method="post">
+    <label for="todo">Todo:</label>
+    <input type="text" id="todo-input" placeholder="Enter a new task..." name="todo"> 
+    <br>
+    <label for="status">Status:</label>
+    <input type="text" id="todo-input" placeholder="Enter a new task..." name="status"> 
+    <button type="submit">Add</button> 
+</form> -->
+<ol id="todo-list">
+    <% if(locals.todos){ %>
+    <% todos.forEach(element => {%>
+        <li data-id="<%= element._id %>"><strong>
+           <em><%=`${element.todo} and status is: ${element.todoStatus}`%></em>
+           </strong>
+           <form action="/patch/<%= element._id %>" method="post" class="todo-action">
+                <input  type="hidden" value="<%= element._id %>" name="_id">
+                <button id="patchBtn" type="submit">
+                    update
+                </button>
+            </form>
+           <button class="deleteBtn" type="submit">delete</button>
+          </li>
+    <%}); %>
+    <%}%>
+</ol>
+<button id="openFormBtn">Add Todo</button>
+<%- include('partials/form.ejs') %> <!-- Include the form template -->
+<%- include("partials/footer.ejs")%>

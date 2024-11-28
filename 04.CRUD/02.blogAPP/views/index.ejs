@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+  <div class="container">
+    <h1>My Blog</h1>
+    <!-- <a id="newPostBtn" href="/new">New Post</a> -->
+    <button id="openFormBtn">Add Todo</button>
+    <div id="formContainer" class="form-popup" style="display: none;">
+      <form id="newPostForm" action="/api/createPosts" method="POST" class="blog-container">
+          <label for="newPost"><b>BLOG POST</b></label>
+          <input type="text" placeholder="Enter title" name="title" required>
+          <label for="Content">Content</label>
+          <textarea name="content" rows="10"></textarea>
+          <input type="text" name="author" required placeholder="author name">
+          <button type="submit">Add</button> 
+          <button type="button" class="btn cancel" id="closeFormBtn">Close</button>
+      </form>
+  </div>
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li data-id="<%=post.id%>">
+          <h2>
+            <%=post.title%>
+          </h2>
+          <small>
+            <%=post.date %>
+          </small>
+          <p>
+            <%=post.content%>
+          </p>
+          <small>By: <%=post.author%> </small>
+          <a class="edit" href="/api/patchPost/<%= post.id %>">Edit</a>
+          <button class="deleteBtn" type="submit">delete</button>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+</body>
+<%- include("partials/footer.ejs") %>
+</html>
