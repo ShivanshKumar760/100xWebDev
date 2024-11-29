@@ -1,0 +1,20 @@
+<html lang="en">
+<%- include("./partials/header.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div id="formContainer" class="container"">
+    <form id="newPostForm" action="/blogs" method="POST" class="blog-container">
+        <label for="newPost"><b>BLOG POST</b></label>
+        <input type="text" placeholder="Enter title" name="title" required>
+        <label for="Content">Content</label>
+        <textarea name="content" rows="10"></textarea>
+        <input type="text" name="author" required placeholder="author name">
+        <button type="submit">Add</button> 
+        <button type="button" class="btn cancel" id="closeFormBtn">Close</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html lang="en">
+<%- include("./partials/header.ejs") %>
+
+<body>
+  <div class="container">
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="blogs content">
+    <h2>All Blogs:</h2>
+
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li data-id="<%=post._id%>">
+          <h4>
+            <%=post.title%>
+            <br>
+            <span>Post id is:</span> <%=post._id%>
+            <small>
+              <%=post.createdAt %>
+            </small>
+          </h4>
+          
+          <p>
+            <%=post.content%>
+          </p>
+          <small>By: <%=post.author%> </small>
+          <div class="blog-nav-component" data-id="<%=post._id%>">
+            <a class="perticular-blog flex-item" href="/blogs/perticular/<%= post._id %>">
+              Open
+            </a>
+            <a  class="edit flex-item" href="/blogs/patch/<%= post._id %>">Edit</a>
+            <button class="deleteBtn flex-item" type="submit">delete</button>
+          </div>
+          
+        </li>
+        <% }); %>
+    </ul>
+    
+  </div>
+  </div>
+
+</body>
+<%- include("./partials/footer.ejs") %>
+</html>
