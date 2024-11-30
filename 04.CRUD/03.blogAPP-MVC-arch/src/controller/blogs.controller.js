@@ -11,6 +11,7 @@ const allBlogs=(req, res) => {//working
 
 const perticularBlog=(req, res) => {//working
     const {params:{_id}}=req;
+    console.log(_id);
     blogCollection.findById(_id).then((post)=>{
       const makePost_Array=[post];
       res.status(200).render("index",{title:makePost_Array[0].title,posts:makePost_Array});
@@ -20,7 +21,17 @@ const perticularBlog=(req, res) => {//working
     });
     
 };
-
+const getJson_dataBlog=(req, res) => {//working
+  const {params:{_id}}=req;
+  console.log(_id);
+  blogCollection.findById(_id).then((post)=>{
+    res.json(post);
+  }).catch((err)=>{
+    console.log(err);
+    res.status(400).json({errorMessage:"Cannot fetch blog-post from server !"});
+  });
+  
+};
 const getPath_blogForm=(req,res)=>{
     const {params:{_id}}=req;
     console.log(_id);
@@ -82,4 +93,4 @@ const deleteBlog= (req, res) => {//working
 };
 
 
-export {allBlogs,perticularBlog,getPath_blogForm,postBlog,patchBlog,deleteBlog,postForm};
+export {allBlogs,perticularBlog,getPath_blogForm,postBlog,patchBlog,deleteBlog,postForm,getJson_dataBlog};
