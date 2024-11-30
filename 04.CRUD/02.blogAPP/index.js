@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import posts from "./data/db.js";
 import {fileURLToPath} from "url";
 import {dirname} from "path";
 import path from "path";
