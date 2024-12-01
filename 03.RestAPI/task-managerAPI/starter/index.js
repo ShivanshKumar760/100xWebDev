@@ -1,16 +1,20 @@
 import express from "express";
 import taskRouter from "./routes/task_route.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 const app=express();
-const port=3000;
-
-
-// app.get("/",async (req, res) => {
-//     const tasks = await Task.find({})
-//     res.status(200).json({ tasks })
-// });
+const port=process.env.PORT||4000;
 
 app.use("/",taskRouter);
 
-app.listen(port,()=>{
-    console.log("Server is running!");
+
+
+mongoose.connect(process.env.MONGO_URL).then(()=>{
+    app.listen(port,()=>{
+        console.log(`Server is running on ${port}!`);
+    })
+}).catch((err)=>{
+    console.log(err);
+    console.log("Sorry Couldnt connect with mongo atlas");
 })

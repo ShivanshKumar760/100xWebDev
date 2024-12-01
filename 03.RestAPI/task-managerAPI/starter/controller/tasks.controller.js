@@ -1,6 +1,10 @@
-
+import taskCollection from "../models/task_schema.js";
 const getAllTasks=(req,res)=>{
-    res.json({msg:"Welcome the get route controller"});
+    taskCollection.find().then((taskCollection_array)=>
+    {
+        res.json(taskCollection_array);
+    })
+    // res.json({msg:"Welcome the get route controller"});
 };
 
 const createTask=(req,res)=>{
