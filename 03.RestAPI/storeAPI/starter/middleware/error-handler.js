@@ -1,6 +1,10 @@
-const errorHandlerMiddleware = async (err, req, res, next) => {
-  console.log(err)
-  return res.status(500).json({ msg: 'Something went wrong, please try again' })
+const errorHandlerMiddleware = (err, req, res, next) => {
+  console.log(err.message);
+  return res.status(500).json({ 
+    msg: err.message,
+    additional:"Somthing went wrong!" 
+  });
 }
 
-module.exports = errorHandlerMiddleware
+// module.exports = errorHandlerMiddleware
+export default errorHandlerMiddleware;
