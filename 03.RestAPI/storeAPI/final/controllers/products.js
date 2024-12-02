@@ -42,10 +42,10 @@ const getAllProducts = async (req, res) => {
     });
   }
 
-  let result = Product.find(queryObject);
-  // sort
+  let result = Product.find(queryObject);//async
+  // sort-->string
   if (sort) {
-    const sortList = sort.split(',').join(' ');
+    const sortList = sort.split(',').join(' ');//split from , join ''
     result = result.sort(sortList);
   } else {
     result = result.sort('createdAt');
