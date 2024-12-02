@@ -1,5 +1,6 @@
 import taskCollection from "../models/task_schema.js";
 import asyncWrapper from "../middleware/async.js";
+import { createCustomError } from "../error/errorClasss.js";
 const getAllTasks=asyncWrapper(async (req,res)=>{
 
         const taskCollection_array=await taskCollection.find();
@@ -18,14 +19,15 @@ const createTask=asyncWrapper(async (req,res)=>{
   
 });
 
-const getPerticularTask=asyncWrapper(async(req,res)=>{
+const getPerticularTask=asyncWrapper(async(req,res,next)=>{
     const {params:{_id}}=req;
     console.log(req.params);
     
     const fetchedTask=await taskCollection.findById(_id);
     if(!fetchedTask)
     {
-        return res.status(401).json({msg:"No task found with that _id"});
+        return next(createCustomeError("No task found with that _id",404));
+        // return res.status(401).json({msg:"No task found with that _id"});
     }
     console.log(fetchedTask);
     res.status(200).json({task:fetchedTask});
