@@ -15,7 +15,7 @@ const Home=()=>{let [blogs,setBlogs]=useState(null);
             // console.log(response.json());-->this respons.json() returns a promise 
             //so returning it and consoling it will return two promise and .then() wont be 
             //able to handle two promise 
-            return response.json();
+            return response.json();//this return a promise  so needs to handle it async
         }).then((responseJson_Data)=>{
             setttingData(responseJson_Data);
         })},[]);

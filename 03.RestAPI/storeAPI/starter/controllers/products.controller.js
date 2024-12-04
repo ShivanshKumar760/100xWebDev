@@ -6,7 +6,7 @@ const getAllProductsStatic=async (req,res)=>{
 
 const getAllProductsDynamically=async (req,res)=>{
     const {query}=req;
-    const {featured,company,name,sort,fields}=query;
+    const {featured,company,name,sort,fields,numericFilters}=query;
     console.log(featured);
     // console.log(sort.split(","));
     console.log(typeof featured);//string
@@ -23,8 +23,34 @@ const getAllProductsDynamically=async (req,res)=>{
         queryObject.name = { $regex: name, $options: 'i' };//i means insensitive to 
         //character casing that's does not matter capital or samll
     }
+
+    if(numericFilters)//numericFiletes will be string type
+    {
+        const operatorMap={
+            '>': '$gt',
+            '>=': '$gte',
+            '=': '$eq',
+            '<': '$lt',
+            '<=': '$lte',
+        }
+        const regEx = /\b(<|>|>=|=|<|<=)\b/g;
+        let filters = numericFilters.replace(//replace the > with $gt 
+          regEx,
+          (match) => `-${operatorMap[match]}-`
+        );
+        console.log(numericFilters);
+        console.log(filters);
+        const options = ['price', 'rating'];
+        filters = filters.split(',').forEach((item) => {//filters:price-$gt-30
+            //field:price operator:$gt and value:30
+          const [field, operator, value] = item.split('-');
+          if (options.includes(field)) {
+            queryObject[field] = { [operator]: Number(value) };
+          }
+        });
+    }
     
-    console.log(queryObject);
+    // console.log(queryObject);
     // let productsArray=await productsCollection.find(queryObject,null,{strict:false});
     // in the above as soon as we type await before the query it finishes for the query to 
     //give back the result but in below one it returns the query promise that is the 
@@ -34,6 +60,9 @@ const getAllProductsDynamically=async (req,res)=>{
     //we have to set this strict value to fasle to check if the given field is present 
     //or not if not return back the empty array or else by default it will ignore the 
     //field which is not present and will return back  the full array
+
+    
+    console.log(queryObject);
     if(sort)
     {
       let sortResult_array=sort.split(",");
