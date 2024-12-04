@@ -14,15 +14,15 @@ app.use(errorHandler);
 
 app.use(notFound);
 
-// mongoose.connect(process.env.MONGO_URL).then(()=>{
-//     app.listen(port,()=>{
-//         console.log(`Server is running on ${port}!`);
-//     })
-// }).catch((err)=>{
-//     console.log(err);
-//     console.log("Sorry Couldnt connect with mongo atlas");
-// })
-
-app.listen(port,()=>{
-    console.log(`Server is running on ${port}!`);
+mongoose.connect(process.env.MONGO_URL).then(()=>{
+    app.listen(port,()=>{
+        console.log(`Server is running on ${port}!`);
+    })
+}).catch((err)=>{
+    console.log(err);
+    console.log("Sorry Couldnt connect with mongo atlas");
 })
+
+// app.listen(port,()=>{
+//     console.log(`Server is running on ${port}!`);
+// })

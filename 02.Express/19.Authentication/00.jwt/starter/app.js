@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+import "express-async-errors";
 require('dotenv').config();
 require('express-async-errors');
 

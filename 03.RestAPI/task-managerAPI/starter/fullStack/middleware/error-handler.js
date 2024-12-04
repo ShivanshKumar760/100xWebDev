@@ -1,4 +1,4 @@
-import { customApiError } from "../error/errorClasss";
+import { customApiError } from "../error/errorClasss.js";
 const errorHandler=(err,req,res,next)=>{
     console.log(err);
     if(err instanceof customApiError)
