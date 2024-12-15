@@ -50,9 +50,6 @@ const patchTask=async (req,res)=>{
     console.log(taskID);
     try{
         const patchTask=await taskCollection.findByIdAndUpdate(taskID,{$set:req.body},{new:true});
-        if (!patchTask) {
-            return next(createCustomError(`No task with id : ${taskID}`, 404))
-        }
         console.log(patchTask);
         res.status(200).json({ task:patchTask });
     }
@@ -70,9 +67,6 @@ const deleteTask=async (req,res)=>{
     console.log(taskID);
     try{
         const deletedTask = await taskCollection.findByIdAndDelete(taskID);
-        if (!deleteTask) {
-            return next(createCustomError(`No task with id : ${taskID}`, 404))
-        }
         console.log(deletedTask)
         res.status(200).json({ task:deletedTask })
     }

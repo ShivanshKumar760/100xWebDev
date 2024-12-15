@@ -2,7 +2,8 @@ import blogCollection from "../model/blogSchema.js";
 
 const allBlogs=(req, res) => {//working
     blogCollection.find().then((posts)=>{
-      res.status(200).render("index",{title:"Home",posts:posts});
+      // res.status(200).render("index",{title:"Home",posts:posts});
+      res.json(posts)
     }).catch((err)=>{
       console.log(err);
       res.status(400).json({errorMessage:"Cannot fetch data from server !"});
@@ -14,7 +15,8 @@ const perticularBlog=(req, res) => {//working
     console.log(_id);
     blogCollection.findById(_id).then((post)=>{
       const makePost_Array=[post];
-      res.status(200).render("index",{title:makePost_Array[0].title,posts:makePost_Array});
+      // res.status(200).render("index",{title:makePost_Array[0].title,posts:makePost_Array});
+      res.json(post);
     }).catch((err)=>{
       console.log(err);
       res.status(400).json({errorMessage:"Cannot fetch blog-post from server !"});

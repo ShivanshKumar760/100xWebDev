@@ -6,11 +6,12 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import methodOverride from "method-override";
 import blogRouter from "./routes/blogs.js";
-
+import cors from "cors";
 const app=express();
 const port=3000;
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=dirname(__filename);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}));

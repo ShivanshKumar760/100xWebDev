@@ -26,7 +26,7 @@ const getPerticularTask=asyncWrapper(async(req,res,next)=>{
     const fetchedTask=await taskCollection.findById(_id);
     if(!fetchedTask)
     {
-        return next(createCustomeError("No task found with that _id",404));
+        return next(createCustomError("No task found with that _id",404));
         // return res.status(401).json({msg:"No task found with that _id"});
     }
     console.log(fetchedTask);
