@@ -33,10 +33,10 @@ app.use(session({
         secure:false,//if set true can only be used over http and not https
         maxAge:60000*60//1 hr
     },
-    store:MongoStore.create({
-        // client:mongoose.connection.getClient()
-        mongoUrl:process.env.MONGO_URL
-    })
+    // store:MongoStore.create({
+    //     // client:mongoose.connection.getClient()
+    //     mongoUrl:process.env.MONGO_URL
+    // })
 }));
 
 app.use(passport.initialize());
