@@ -14,3 +14,13 @@ body {
   color: #fff;
   background-color: #000;
 }
+
+
+form{
+  display: inline;
+  margin-right: 50px ;
+}
+
+.actions{
+  margin-bottom: 25px;
+}

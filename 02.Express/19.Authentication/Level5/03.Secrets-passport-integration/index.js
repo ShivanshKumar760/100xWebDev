@@ -66,13 +66,24 @@ app.get("/register", (req, res) => {
 app.get("/secrets",(req,res)=>{
   if(req.isAuthenticated())
   {
-    return res.render("secrets.ejs");
+    userCollection.find({"secret":{$ne:null}}).then((foundUser)=>{
+      return res.render("secrets.ejs",{userWith_Secret:foundUser});
+    })
+    
   }
   else{
     return res.redirect("/login");
   }
 })
-
+app.get("/submit",(req,res)=>{
+  if(req.isAuthenticated())
+  {
+    return res.render("submit.ejs");
+  }
+  else{
+    return res.redirect("/login");
+  }
+});
 app.post("/register", async (req, res) => {
   const {body:{username,password}}=req;
   bcrypt.hash(password,saltRounds)
@@ -103,6 +114,30 @@ app.post("/login",passport.authenticate("local"),(req, res) => {
     return res.status(401).send("Un-authorised!");
   }
 });
+
+app.post("/submit",(req,res)=>{
+  const {body:{secret}}=req;
+  userCollection.findById(req.user.id)
+  .then((resultedUser)=>{
+    resultedUser.secret=secret;
+    resultedUser.save().then(()=>{
+      res.redirect("/secrets");
+    }).catch((err)=>{
+      console.log(err);
+      res.send("Cannot save the changes  done to user!");
+    })
+  }).catch((err)=>{
+    console.log(err);
+    res.send("Cannot find the user with the id!");
+  })
+});
+
+app.post("/logout",(req,res)=>{
+  req.logOut(()=>{
+    console.log("Logged out!");
+  });
+  res.redirect("/");
+})
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
