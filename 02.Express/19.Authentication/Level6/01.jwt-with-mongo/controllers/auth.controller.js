@@ -103,4 +103,9 @@ const login_post = async (req, res) => {
     })
 };
 
-export {signup_get,signup_post,login_get,login_post}
+const logout_get=(req,res)=>{
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/');
+};
+
+export {signup_get,signup_post,login_get,login_post,logout_get}

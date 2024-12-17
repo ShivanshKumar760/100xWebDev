@@ -23,9 +23,17 @@ app.set("views",path.join(__dirname,"views"));
 
 
 // routes
-app.get('/', (req, res) => res.render('home'));
+app.get('/', (req, res) =>{ 
+  let flag=false;
+  if(req.cookies.jwt)
+  {
+    flag=true;
+  }
+  res.render('home',{flag:flag})
+});
 app.get('/smoothies',requireAuth,(req,res)=>{
-  res.render("smoothies");
+  let flag=true;
+  res.render("smoothies",{flag:flag});
 });
 
 mongoose.connect(process.env.MONGO_URL)
