@@ -1,14 +1,14 @@
-function fetchUserName(callback) {
+function fetchUserName(callbackFunction) {
     setTimeout(() => {
         console.log("Fetched user name");
-        callback("Alice");
+        callbackFunction("Alice");
     }, 1000);
 }
 
-function fetchUserAge(name, callback) {
+function fetchUserAge(name, callbackFu) {
     setTimeout(() => {
         console.log(`Fetched age for ${name}`);
-        callback(30);
+        callbackFunction(30);
     }, 1000);
 }
 
