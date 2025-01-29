@@ -6,6 +6,9 @@
 interface Author{
     name:string,
     avatar:string
+    age?:number//this is basicallya a optional property casue it has this ?
+    //and it indicates that if the object which is created using this interface 
+    //does not have a age property it wont through error 
 };
 
 const authorOne:Author={
