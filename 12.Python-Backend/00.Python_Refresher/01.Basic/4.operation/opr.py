@@ -10,12 +10,25 @@ print("Number 2 is:",num2)
 
 #addition:
 
-print("Addition of two is :",num1+num2)
+print("Addition of two will be  :",num1+num2)
 
 #subtraction
 
-print("Subtraction of two number is :",num1-num2)
+print("Subtraction of two number will be  :",num1-num2)
 
 #multiplication
 
-print("")
+print("Multiplication of two number will be ",num1*num2)
+
+#division
+
+print("Division of two number will be ",num1/num2)
+
+#modulos or remainder
+
+print(f"Remainder after dividing  {num1} with {num2} will be :{num1%num2}")
+
+
+#Exponential / Power
+
+print(f"Result of  {num1} to the power of {num2} will be :{num1**num2}")
