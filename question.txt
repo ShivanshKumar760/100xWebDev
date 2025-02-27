@@ -1,0 +1,209 @@
+//solution 1:
+type Contact = {
+  name: string;
+  phone: string;
+};
+
+class PhoneBook {
+  private contacts: Contact[];
+
+  constructor() {
+    this.contacts = [];
+  }
+
+  addContact(name: string, phone: string): void {
+    this.contacts.push({ name, phone });
+  }
+
+  searchContact(name: string): string {
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].name.toLowerCase() === name.toLowerCase()) {
+        return this.contacts[i].phone;
+      }
+    }
+    return "Contact not found";
+  }
+}
+
+// Example usage
+const phoneBook = new PhoneBook();
+phoneBook.addContact("Alice", "123-456-7890");
+phoneBook.addContact("Bob", "987-654-3210");
+
+console.log(phoneBook.searchContact("Alice")); // Output: 123-456-7890
+console.log(phoneBook.searchContact("Charlie")); // Output: Contact not found
+
+
+//solution 1 alternate solution:
+type Contact = {
+  name: string;
+  phone: string;
+};
+
+class PhoneBook {
+  private contacts: Contact[];
+
+  constructor() {
+    this.contacts = [];
+  }
+
+  addContact(name: string, phone: string): void {
+    this.contacts.push({ name, phone });
+  }
+
+  searchContact(name: string): string {
+    const contact = this.contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+    return contact ? contact.phone : "Contact not found";
+  }
+}
+
+// Example usage
+const phoneBook = new PhoneBook();
+phoneBook.addContact("Alice", "123-456-7890");
+phoneBook.addContact("Bob", "987-654-3210");
+
+console.log(phoneBook.searchContact("Alice")); // Output: 123-456-7890
+console.log(phoneBook.searchContact("Charlie")); // Output: Contact not found
+
+
+
+//solution2:
+class FoodDeliveryQueue {
+  private orders: string[];
+
+  constructor() {
+    this.orders = [];
+  }
+
+  // Add a new order to the queue
+  addOrder(order: string): void {
+    this.orders.push(order);
+  }
+
+  // Process the oldest order (FIFO)
+  processOrder(): string {
+    if (this.orders.length === 0) {
+      return "No orders to process";
+    }
+    return `Processing order: ${this.orders.shift()}`;
+  }
+
+  // Check the next order to be delivered without removing it
+  nextOrder(): string {
+    if (this.orders.length === 0) {
+      return "No pending orders";
+    }
+    return `Next order to deliver: ${this.orders[0]}`;
+  }
+}
+
+// Example usage
+const deliveryQueue = new FoodDeliveryQueue();
+deliveryQueue.addOrder("Pizza");
+deliveryQueue.addOrder("Burger");
+deliveryQueue.addOrder("Pasta");
+
+console.log(deliveryQueue.nextOrder()); // Output: Next order to deliver: Pizza
+console.log(deliveryQueue.processOrder()); // Output: Processing order: Pizza
+console.log(deliveryQueue.nextOrder()); // Output: Next order to deliver: Burger
+
+
+
+
+//solution 3:
+class ParkingLot {
+  private cars: string[];
+
+  constructor() {
+    this.cars = [];
+  }
+
+  // Car enters the parking lot (Push onto stack)
+  enter(car: string): void {
+    this.cars.push(car);
+    console.log(`${car} has entered the parking lot.`);
+  }
+
+  // Car exits only if it's the last one that entered (Pop from stack)
+  exit(): string {
+    if (this.cars.length === 0) {
+      return "No cars in the parking lot.";
+    }
+    const car = this.cars.pop();
+    return `${car} has left the parking lot.`;
+  }
+
+  // Display the current state of the parking lot
+  display(): void {
+    if (this.cars.length === 0) {
+      console.log("Parking lot is empty.");
+    } else {
+      console.log("Current parking lot state:", this.cars);
+    }
+  }
+}
+
+// Example Usage
+const parkingLot = new ParkingLot();
+parkingLot.enter("Car A");
+parkingLot.enter("Car B");
+parkingLot.enter("Car C");
+
+parkingLot.display(); // Output: Current parking lot state: [ 'Car A', 'Car B', 'Car C' ]
+
+console.log(parkingLot.exit()); // Output: Car C has left the parking lot.
+
+parkingLot.display(); // Output: Current parking lot state: [ 'Car A', 'Car B' ]
+
+
+//solution 4:
+
+class ExamScoringSystem {
+  private students: ([string, number])[]; // Array of tuples (name, score)
+
+  constructor() {
+    this.students = [];
+  }
+
+  // Add a student and their score
+  addStudent(name: string, score: number): void {
+    this.students.push((name, score)); // Using () for tuple inside array
+  }
+
+  // Find the highest score and the students who achieved it
+  findHighestScorers(): { highestScore: number; students: string[] } {
+    if (this.students.length === 0) {
+      return { highestScore: 0, students: [] };
+    }
+
+    let highestScore = Math.max(...this.students.map(student => student[1]));
+    let topStudents = this.students
+      .filter(student => student[1] === highestScore)
+      .map(student => student[0]);
+
+    return { highestScore, students: topStudents };
+  }
+
+  // Calculate the average score of all students
+  calculateAverageScore(): number {
+    if (this.students.length === 0) {
+      return 0;
+    }
+
+    let totalScore = this.students.reduce((sum, student) => sum + student[1], 0);
+    return totalScore / this.students.length;
+  }
+}
+
+// Example Usage
+const exam = new ExamScoringSystem();
+exam.addStudent("Alice", 85);
+exam.addStudent("Bob", 98);
+exam.addStudent("Charlie", 98);
+exam.addStudent("David", 75);
+
+console.log(exam.findHighestScorers()); 
+// Output: { highestScore: 98, students: [ 'Bob', 'Charlie' ] }
+
+console.log("Average Score:", exam.calculateAverageScore()); 
+// Output: Average Score: 89
