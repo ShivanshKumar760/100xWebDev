@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <li>Hello<button>Done</button></li> -->
+    </div>
+  </body>
+  <script>
+    // get the div
+    let storeTodo = JSON.parse(localStorage.getItem("todos")) || [];
+    const getRoot = document.getElementById("root");
+    //create the text node
+    const getRootText = document.createTextNode("Todo App");
+    //create the heading
+    const createHeader = document.createElement("h1");
+    //append the text node to the heading
+    createHeader.appendChild(getRootText);
+
+    //create the input field
+    const createInput = document.createElement("input");
+    //set the type of input field using setAttribute
+    createInput.setAttribute("type", "text");
+    //set the id of input field using setAttribute
+    createInput.setAttribute("id", "todoInput");
+    //set the placeholder of input field using setAttribute
+    createInput.setAttribute("placeholder", "Add a new todo");
+    //set the class of input field using setAttribute
+    createInput.setAttribute("class", "todoInput");
+    //set the autocomplete attribute of input field using setAttribute
+    createInput.setAttribute("autocomplete", "off");
+    //set the autocorrect attribute of input field using setAttribute
+    createInput.setAttribute("autocorrect", "off");
+
+    //create the button
+    const createButton = document.createElement("button");
+    //text node for button
+    const getButtonText = document.createTextNode("Add Todo");
+    //set the id of button using setAttribute
+    createButton.setAttribute("id", "addTodo");
+    //set the class of button using setAttribute
+    createButton.setAttribute("class", "addTodo");
+    //set the type of button using setAttribute
+    createButton.setAttribute("type", "button");
+    //set the onclick attribute of button using setAttribute
+    createButton.setAttribute("onclick", "addTodo()");
+    //set the title of button using setAttribute
+    createButton.appendChild(getButtonText);
+
+    //create the ordered list
+    createOrderedList = document.createElement("ol");
+    createOrderedList.setAttribute("id", "todoList");
+    createOrderedList.setAttribute("class", "todoList");
+
+    getRoot.appendChild(createHeader);
+    getRoot.appendChild(createInput);
+    getRoot.appendChild(createButton);
+    getRoot.appendChild(createOrderedList);
+
+    if (storeTodo.length > 0) {
+      for (let i = 0; i < storeTodo.length; i++) {
+        const createListItem = document.createElement("li");
+        const getListItemText = document.createTextNode(storeTodo[i]);
+        //Delete Button
+        const createButtonToDelete = document.createElement("button");
+        const getButtonText = document.createTextNode("Delete");
+        createButtonToDelete.setAttribute("id", "deleteTodo");
+        createButtonToDelete.setAttribute("class", "deleteTodo");
+        createButtonToDelete.setAttribute("type", "button");
+        createButtonToDelete.setAttribute("onclick", "removeTodo(this)");
+        createButtonToDelete.appendChild(getButtonText);
+        //Update Button
+        const createButtonToUpdate = document.createElement("button");
+        const getButtonTextToUpdate = document.createTextNode("Update");
+        createButtonToUpdate.setAttribute("id", "updateTodo");
+        createButtonToUpdate.setAttribute("class", "updateTodo");
+        createButtonToUpdate.setAttribute("type", "button");
+        createButtonToUpdate.setAttribute("onclick", "updateTodo(this)");
+        createButtonToUpdate.appendChild(getButtonTextToUpdate);
+
+        //append everything to the ordered List
+        createListItem.append(
+          getListItemText,
+          createButtonToDelete,
+          createButtonToUpdate
+        );
+        createOrderedList.appendChild(createListItem);
+      }
+    }
+
+    function addTodo() {
+      //get Input value
+      const getInputValue = document.getElementById("todoInput").value;
+      storeTodo.push(getInputValue);
+      localStorage.setItem("todos", JSON.stringify(storeTodo));
+      //create li item
+      const createListItem = document.createElement("li");
+      //create the text node
+      const getListItemText = document.createTextNode(getInputValue);
+
+      //Delete Button
+      const createButtonToDelete = document.createElement("button");
+      const getButtonText = document.createTextNode("Delete");
+      createButtonToDelete.setAttribute("id", "deleteTodo");
+      createButtonToDelete.setAttribute("class", "deleteTodo");
+      createButtonToDelete.setAttribute("type", "button");
+      createButtonToDelete.setAttribute("onclick", "removeTodo(this)");
+      createButtonToDelete.appendChild(getButtonText);
+      //Update Button
+      const createButtonToUpdate = document.createElement("button");
+      const getButtonTextToUpdate = document.createTextNode("Update");
+      createButtonToUpdate.setAttribute("id", "updateTodo");
+      createButtonToUpdate.setAttribute("class", "updateTodo");
+      createButtonToUpdate.setAttribute("type", "button");
+      createButtonToUpdate.setAttribute("onclick", "updateTodo(this)");
+      createButtonToUpdate.appendChild(getButtonTextToUpdate);
+
+      //append everything to the ordered List
+      createListItem.append(
+        getListItemText,
+        createButtonToDelete,
+        createButtonToUpdate
+      );
+      createOrderedList.appendChild(createListItem);
+      document.getElementById("todoInput").value = "";
+    }
+    //create the remove function
+    function removeTodo(e) {
+      console.log(e);
+      const getListItem = e;
+      const getParentNode = getListItem.parentNode;
+      const getGrandParentNode = getParentNode.parentNode;
+      console.log(getParentNode);
+
+      getGrandParentNode.removeChild(getParentNode);
+    }
+
+    function updateTodo(e) {
+      const getListItem = e;
+      const getParentNode = getListItem.parentNode;
+      getParentNode.setAttribute("style", "text-decoration: line-through");
+    }
+  </script>
+</html>
