@@ -1,0 +1,51 @@
+Data type are declaration for variables .This determines the type and size of data associated with variables which is essential
+to know since different data types occupy different sizes of memory .
+
+There are 2 types of data types :
+1.Primitive Data types :to store simple values
+2.Non Primitive Data types:to store complex values
+
+
+Primitive Data type:
+
+These are the data type of fixed size 
+
+Data type      Meaning      size(in bytes)   Range 
+
+byte           8 bit signed     1            -128 to 127
+
+short          16 bit signed    2            -32,768 to 32,767
+
+int            32 bit signed    4            -2,147,483,648 to 2,147,483,647
+
+
+long           64 bit signed    8            -9,223,372,036,854,775,808 to 
+                                              9,223,373,036,854,775,807
+
+float          32 bit IEEE 754  4             upto 7 decimal
+               floating point 
+
+
+double         64 bit IEEE 754  8             upto 16 decimal
+               floating 
+               point 
+
+char           unicode character 2             a,b,c.....
+               (16 bit)
+
+bool          boolean            1             true and false     
+  
+
+
+Non Primitive Data type
+These are of variable size and are usually declared with a 'new' keyword
+
+
+Ex:String,Array
+
+
+String name=new String("Aman");
+int [] marks = new int[3];
+marks[0]=97;
+marks[1]=98;
+marks[2]=95;

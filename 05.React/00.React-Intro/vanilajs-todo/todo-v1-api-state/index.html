@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+  <button onclick="addTodo()">Add todo</button>
+
+  <div id="todos">
+<!-- This is the grand parent div -->
+<!-- this will have child div-- -->
+  </div>
+</body>
+  <script>
+    function markAsDone(todoId) {//we are sending id to mark them as done
+      const parent = document.getElementById(todoId);
+      parent.children[2].innerHTML = "Done!"
+    }
+ 
+
+    function createChild(title, description, id) {
+      const child = document.createElement("div");
+      const firstGrandParentChild = document.createElement("div");
+      firstGrandParentChild.innerHTML = title;
+      const secondGrandParentChild = document.createElement("div");
+      secondGrandParentChild.innerHTML = description;
+      const thirdGrandParentChild = document.createElement("button");
+      thirdGrandParentChild.innerHTML = "Mark as done";
+      thirdGrandParentChild.setAttribute("onclick", `markAsDone(${id})`);
+      child.appendChild(firstGrandParentChild);
+      child.appendChild(secondGrandParentChild);
+      child.appendChild(thirdGrandParentChild)
+      child.setAttribute("id", id);
+      return child;
+    }
+    
+    function updateTheState(state){
+        const parent = document.getElementById("todos");
+        parent.innerHTML = "";
+        for (let i = 0; i < state.length; i++) {
+            const todo = state[i];
+            parent.appendChild(createChild(todo.title, todo.description, todo.id))
+        }
+    }
+    window.setInterval(()=>{
+        fetch("https://todos-temp.vercel.app/").then((res)=>{
+            return res.json()//this also returns a promise 
+        }).then((data)=>{
+            console.log(data)
+            updateTheState(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    },5000)
+  </script>
+</html>
