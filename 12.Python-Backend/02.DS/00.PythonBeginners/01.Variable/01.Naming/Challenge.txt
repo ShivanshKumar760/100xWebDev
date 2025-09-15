@@ -1,0 +1,8 @@
+You are given some incomplete code on the right. 
+It should print the capitals of Spain, France and Germany, in that order. 
+Try to use some descriptive variable names to complete the code. 
+The correct output should be:
+
+Madrid
+Paris
+Berlin

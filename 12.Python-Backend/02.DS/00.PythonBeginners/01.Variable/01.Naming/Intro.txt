@@ -1,0 +1,20 @@
+Variable Naming
+Previously we named our string variable message. 
+The name of a variable is how we can refer to it in our code. 
+This means we can't have two different variables with the same name.
+
+If we wanted a variable to store the capital of the United Kingdom, 
+we could name it capital_of_uk. This is a good name because it is descriptive and 
+easy to understand.
+
+capital_of_uk = "London"
+print(capital_of_uk)
+Output:
+
+London
+There are some strict rules for naming variables, if you break any of these rules it will cause an error:
+
+Variable names can only contain letters, numbers, and underscores.
+Variable names can't start with a number.
+Variable names can't contain spaces.
+Variable names can't be the same as Python keywords like for, if, (we will learn more about these later).

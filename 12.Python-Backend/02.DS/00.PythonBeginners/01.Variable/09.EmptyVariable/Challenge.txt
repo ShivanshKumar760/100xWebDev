@@ -1,0 +1,3 @@
+Challenge
+On the right, declare a variable and assign it to None, then print the type of it.
+

@@ -1,0 +1,18 @@
+Challenge
+Can you add a single line of code on the right to print the following output:
+
+The first message
+The second message
+The third message
+
+
+Given Code:
+message = "The first message"
+
+print(message)
+
+print(message)
+
+message = "The third message"
+
+print(message)

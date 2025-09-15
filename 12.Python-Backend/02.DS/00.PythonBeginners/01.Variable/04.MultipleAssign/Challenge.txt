@@ -1,0 +1,24 @@
+Challenge
+Update the code on the right so that it prints the following. If you take advantage of multiple assignments, you can accomplish this with one or two lines of code.
+
+Hello
+World
+My
+Name
+Is
+
+
+Given Code:
+msg1, msg2 = "World", "Hello"
+msg3, msg4, msg5 = "Name", "Is", "My"
+# Don't change the code above this line
+
+
+
+
+# Don't change the code below this line
+print(msg1)
+print(msg2)
+print(msg3)
+print(msg4)
+print(msg5)

@@ -1,0 +1,15 @@
+Multiple Assignments
+Python allows you to assign multiple variables in a single line. Just separate the variables with a comma, and the right-hand side values with a comma as well.
+
+[msg1, msg2 = "Hello", "World"]
+is equivalent to:
+
+msg1 = "Hello"
+msg2 = "World"
+
+This example shows two variables being assigned values in one line, but we can assign more than two if we want.
+
+We can also use this to swap the values of variables:
+
+msg1, msg2 = "Hello", "World" # msg1 = "Hello", msg2 = "World"
+msg1, msg2 = msg2, msg1       # msg1 = "World", msg2 = "Hello"

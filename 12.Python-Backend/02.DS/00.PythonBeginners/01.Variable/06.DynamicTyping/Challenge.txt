@@ -1,0 +1,21 @@
+Challenge
+Update the code on the right, without removing any lines, so that the output is:
+
+<class 'int'>
+<class 'float'>
+<class 'bool'>
+<class 'str'>
+<class 'list'>
+
+
+Given Code:
+
+print(type(variable))
+
+print(type(variable))
+
+print(type(variable))
+
+print(type(variable))
+
+print(type(variable))

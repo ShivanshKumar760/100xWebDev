@@ -1,0 +1,6 @@
+Challenge
+Update the code on the right so that it prints "this string is stored in a variable" 
+to the console twice. You should be able to accomplish this by 
+only adding one line of code.
+
+If you think you have the correct answer, click the Submit button.

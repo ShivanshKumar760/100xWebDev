@@ -1,0 +1,10 @@
+variable=1
+print(type(variable))
+variable=1.3
+print(type(variable))
+variable=False
+print(type(variable))
+variable="World"
+print(type(variable))
+variable=[1,2]
+print(type(variable))

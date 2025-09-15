@@ -1,0 +1,22 @@
+Challenge
+The code on the right will currently throw an error (you can run it to confirm). Can you find the bug and fix it so the output is:
+
+10
+<class 'str'>
+10
+<class 'int'>
+
+
+Given Code :
+
+
+variable = "hello"
+
+# Don't modify the code below this line
+print(variable)
+print(type(variable))
+
+variable = int(variable)
+
+print(variable)
+print(type(variable))

@@ -1,0 +1,10 @@
+Challenge
+Update the code on the right so that the output is:
+
+<class 'int'>
+<class 'float'>
+<class 'bool'>
+<class 'str'>
+<class 'list'>
+Hint: The values themselves don't matter, only the types.
+
