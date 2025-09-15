@@ -1,0 +1,9 @@
+Challenge
+In the code editor, there is a syntax error. Correct the code so that it prints the following text to the console:
+
+Can someone pls add a closing parenthesis?
+If you think you have the correct answer, click the Submit button.\
+
+
+Given Code:
+print("Can someone pls add a closing parenthesis?"

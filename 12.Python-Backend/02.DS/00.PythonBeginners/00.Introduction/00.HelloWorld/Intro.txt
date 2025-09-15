@@ -1,0 +1,24 @@
+Hello, World
+
+The phrase Hello, world! is a special phrase in programming. In 1972 Brian Kernighan, a computer scientist, wrote a tutorial for the B programming language using this phrase. He later helped create the C programming language.
+
+For most programmers, writing a program that prints Hello, world! is the first program they write when learning code.
+
+Challenge
+To follow this tradition, we will start with the "Hello, World!" program. On the right, you will see a code editor with the following code:
+
+print("")
+Inside of the double quotes, type out the following text:
+
+Hello, world!
+After you're done, click the Submit button.
+
+Hint: Capitalization and punctuation matter! Make sure to type the phrase exactly as shown.
+
+
+
+In Python, print() is a built-in function used to display output to the console. We will learn more about functions later on in the course. For now you can use it to print text, variables, or the result of expressions to the console.
+
+Most programming languages have the equivalent of print() to display output. For example, in JavaScript, you would use console.log().
+
+The console is a text-based interface that allows you to interact with a computer. It is a common tool used by developers to debug their code. In this course, we are actually executing your code on our own server and sending the console output back to you.

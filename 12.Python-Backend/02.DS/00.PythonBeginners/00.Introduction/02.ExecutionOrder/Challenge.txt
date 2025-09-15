@@ -1,0 +1,12 @@
+Challenge
+In the code editor, there are three print statements. Rearrange them so that the output is:
+
+Fourth
+Fifth
+Sixth
+If you think you have the correct answer, click the Submit button.
+
+Given Code :
+print("Fifth")
+print("Fourth")
+print("Sixth")

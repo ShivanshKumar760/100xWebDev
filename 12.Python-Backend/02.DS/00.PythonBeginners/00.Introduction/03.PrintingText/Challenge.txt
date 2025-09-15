@@ -1,0 +1,5 @@
+Challenge
+Your task is to correct the code in the code editor to print the following text to the console:
+
+My favorite quote is "To be or not to be."
+If you think you have the correct answer, click the Submit button.

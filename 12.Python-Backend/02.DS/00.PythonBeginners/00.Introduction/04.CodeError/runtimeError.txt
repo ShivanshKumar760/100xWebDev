@@ -1,0 +1,6 @@
+A runtime error is an error that occurs while the program is running. That means the syntax 
+of the program itself is fine. It is usually caused by something that the programmer 
+did not anticipate. Runtime errors can be difficult to debug because they may not always 
+occur consistently. For example, if 
+we programmed a calculator and the user tries to 
+divide by zero, we will get a runtime error.

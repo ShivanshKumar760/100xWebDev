@@ -1,0 +1,11 @@
+An interpreted programming language is different from a compiled language. 
+In a compiled language, the code is translated into machine code before it is 
+run. In an interpreted language, the code is executed line by line by an 
+interpreter, usually written in another language. 
+This makes it easier to write and test code, but it can be slower than 
+compiled languages.
+
+It's okay if you don't understand all of this yet.
+If you're a beginner learning Python as your first language, the distinction between 
+interpreted and compiled languages is not important for now.
+

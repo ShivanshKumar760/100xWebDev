@@ -1,0 +1,4 @@
+A short cut to comment out lines of code in most code editors is to select the 
+lines you want to comment out and press Ctrl + / (Windows / Linux) or Cmd + / (Mac). 
+This will automatically add the # character to the beginning of each line.
+

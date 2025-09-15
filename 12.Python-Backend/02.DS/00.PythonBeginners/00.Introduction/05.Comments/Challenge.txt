@@ -1,0 +1,16 @@
+Challenge
+Your task is to fix the code on the right without deleting any of the lines. It should print the following text to the console:
+
+I belong here.
+I also belong here.
+Me too!
+If you think you have the correct answer, click the Submit button.
+
+
+
+Given Code:
+print("I belong here.")
+print("Why am I here?")
+print("Get me out of here!")
+print("I also belong here.")
+print("Me too!")

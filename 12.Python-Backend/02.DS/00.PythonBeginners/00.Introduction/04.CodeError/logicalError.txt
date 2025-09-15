@@ -1,0 +1,6 @@
+A logical error is an error that occurs when the program runs without crashing or 
+producing an error, but the output is not what the programmer intended. 
+This is commonly known as a bug. Logical errors can be difficult to find because as 
+programmers we have to identify which lines of code are causing the incorrect output. 
+There are various techniques to debug logical errors, but in large programs, it can 
+still be very challenging.

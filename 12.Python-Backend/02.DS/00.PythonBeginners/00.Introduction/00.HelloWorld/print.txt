@@ -1,0 +1,10 @@
+In Python, print() is a built-in function used to display output to the console. 
+We will learn more about functions later on in the course. 
+For now you can use it to print text, variables, or the result of expressions 
+to the console.
+
+Most programming languages have the equivalent of print() to display output. 
+For example, in JavaScript, you would use console.log().
+
+The console is a text-based interface that allows you to interact with a computer. 
+It is a common tool used by developers to debug their code. In this course, we are actually executing your code on our own server and sending the console output back to you.

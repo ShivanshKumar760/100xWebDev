@@ -1,0 +1,7 @@
+Yes! Another way to define a string is to use single quotes 
+instead of double quotes. So alternatively, if we want to use double quotes 
+inside of a string, we can define the string using single quotes.
+
+print('They said, "Hello, world!"')
+
+This way we don't need to use the escape character.
