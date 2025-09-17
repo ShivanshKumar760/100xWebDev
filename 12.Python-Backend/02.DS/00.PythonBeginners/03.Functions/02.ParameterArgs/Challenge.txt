@@ -1,0 +1,6 @@
+Challenge
+In the code editor, define a function called farewell, which takes a single parameter. The function should print "Goodbye, " followed by the parameter. Then use this function so that the output is:
+
+Goodbye, Bob
+Goodbye, Charlie
+Goodbye, NeetCode

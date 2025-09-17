@@ -1,0 +1,4 @@
+Challenge
+In the code editor, call the function greet with the argument "NeetCode". Then print the type of the return value of the function.
+
+Hint: You can get the type of a value with the type() function.

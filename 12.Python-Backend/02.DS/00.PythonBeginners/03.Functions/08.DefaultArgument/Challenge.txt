@@ -1,0 +1,11 @@
+Challenge
+In the code editor, update the function greet() so that the second parameter has a default value of "!".
+
+Given code :
+
+
+def greet(name, punctuation) -> None:
+    print("Hello, " + name + punctuation)
+
+greet("World", "!")
+greet("World")

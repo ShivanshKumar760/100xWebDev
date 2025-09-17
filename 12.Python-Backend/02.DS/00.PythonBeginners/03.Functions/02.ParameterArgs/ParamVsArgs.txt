@@ -1,0 +1,4 @@
+A parameter is a variable in a function definition. When a function is called, the arguments are the data you pass into the function's parameters. In the example above, the parameter is name and the argument is "Alice".
+
+If we next call the function by passing in "Bob" as the argument, the parameter is still name, but the argument is now "Bob".
+

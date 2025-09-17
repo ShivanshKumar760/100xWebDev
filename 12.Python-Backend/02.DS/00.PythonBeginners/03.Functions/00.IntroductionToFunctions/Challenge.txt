@@ -1,0 +1,17 @@
+Challenge
+In the code editor, we are calling two functions, greet() and say_goodbye().
+
+The greet() function is already defined but it has a bug. It should print "Hello, World!".
+The say_goodbye() function is not defined. Define it so that it prints "Goodbye, World!".
+
+
+
+Given Code:
+def greet():
+print("Hello, World!")
+
+
+
+# don't modify below this line
+greet()
+say_goodbye()

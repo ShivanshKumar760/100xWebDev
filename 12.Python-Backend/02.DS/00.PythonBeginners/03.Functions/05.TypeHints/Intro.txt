@@ -1,0 +1,16 @@
+Type Hints
+In Python, you can add type hints to your functions to indicate what type of data the function expects to receive and return. This is not required, but it can be helpful for other developers who are reading your code.
+
+def add(x: int, y: int) -> int:
+    return x + y
+To add a type hint for a parameter, you add a colon after the parameter name and then the type of data you expect. To add a return type, you add a right arrow (->) after the closing parenthesis and then the type of data you expect to return (before the colon).
+
+Type hints don't change how the function works, for example, we could still pass a couple of strings to the add function above and it would still work.
+
+What if we had a function that did not return anything? The return type would be None.
+
+def greet(name: str) -> None:
+    print("Hello, " + name)
+If you don't believe me, you can confirm it yourself
+
+

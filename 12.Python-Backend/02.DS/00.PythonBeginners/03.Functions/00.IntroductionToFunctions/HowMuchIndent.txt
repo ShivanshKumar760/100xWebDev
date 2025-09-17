@@ -1,0 +1,7 @@
+In Python, indentation is used to define code blocks. 
+All code that belongs to a function should be indented. 
+The standard convention is to use 4 spaces for indentation, 
+which is what we are following in this course. Sometimes code is only indented by 2 spaces, 
+but this is less common. Either way, it's important to be consistent with your indentation. 
+This is the only way Python knows what code belongs to a function.
+

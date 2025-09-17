@@ -1,0 +1,2 @@
+In the code editor create a function named product that accepts two parameters and returns their product.
+

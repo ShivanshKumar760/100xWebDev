@@ -1,0 +1,13 @@
+Challenge
+To prove that the variable n inside the function is different than the one outside, consider this code:
+
+def add_one(n):
+    n = n + 1
+    print(n)   
+
+n = 10
+
+add_one(n)     # Output: 11
+
+print(n)       # Output: ?
+What do you think the output of the last print statement will be? Will it be 10 or 11? Run the code in the editor to find out.

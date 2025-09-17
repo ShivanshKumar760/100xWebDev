@@ -1,0 +1,12 @@
+Challenge
+There is a bug in the code on the right. Can you fix it so that the output is:
+
+10
+20
+
+Given Code:
+print_number(10)
+print_number(20)
+
+def print_number(n):
+    print(n)

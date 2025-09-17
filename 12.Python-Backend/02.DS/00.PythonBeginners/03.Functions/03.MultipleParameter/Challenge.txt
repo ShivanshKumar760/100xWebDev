@@ -1,0 +1,5 @@
+Challenge
+In the code editor, define two functions, two_sum, and three_sum. The two_sum function should take two parameters and print their sum. The three_sum function should take three parameters and print their sum.
+
+Finally, call two_sum with the arguments 7, 10 and after that call three_sum with the arguments 3, 5, 8.
+
