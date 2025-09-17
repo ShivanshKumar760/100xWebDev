@@ -1,0 +1,25 @@
+Challenge
+In the code editor, using if, elif and else, implement the function called check_range(num: int) -> str.
+
+If num is less than 0, return the string "negative".
+If num is 0 return the string "zero".
+If num is greater than 0 and less than 10, return the string "positive single digit".
+If num is greater than or equal to 10, return the string "positive multi digit".
+
+
+Given code:
+def check_range(num: int) -> str:
+
+
+
+
+
+
+
+
+  
+# don't modify code below this line
+print(check_range(-10))
+print(check_range(0))
+print(check_range(9))
+print(check_range(1000))

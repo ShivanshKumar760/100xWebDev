@@ -1,0 +1,7 @@
+Challenge
+In the code editor, 
+implement the is_balance_low(balance: int) function. 
+If the balance is less than or equal to 100, 
+it should print "Warning: Low balance.".
+Otherwise, it should not print anything.
+

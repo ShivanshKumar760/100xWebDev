@@ -1,0 +1,37 @@
+Challenge
+Implement the six functions defined in the code editor.
+
+check_equal(x, y) should return whether x is equal to y.
+check_not_equal(x, y) should return whether x is not equal to y.
+check_less_than(x, y) should return whether x is less than y.
+check_greater_than(x, y) should return whether x is greater than y.
+check_less_than_or_equal(x, y) should return whether x is less than or equal to y.
+check_greater_than_or_equal(x, y) should return whether x is greater than or equal to y.
+You may assume your functions will only receive integers as input.
+
+
+Given Code:
+def check_equal(x, y) -> bool:
+
+
+def check_not_equal(x, y) -> bool:
+
+
+def check_less_than(x, y) -> bool:
+
+
+def check_greater_than(x, y) -> bool:
+
+
+def check_less_than_or_equal(x, y) -> bool:
+
+
+def check_greater_than_or_equal(x, y) -> bool:
+
+
+# Don't change below this line
+print("2 is equal to 2:", check_equal(2, 2))
+print("-2 is equal to 2:", check_equal(-2, 2))
+
+print("-2 is not equal to 2:", check_not_equal(-2, 2))
+print("2 is not equal to 2:", check_not_equal(2, 2))

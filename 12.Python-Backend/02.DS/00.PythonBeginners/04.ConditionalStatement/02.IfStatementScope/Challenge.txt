@@ -1,0 +1,13 @@
+Challenge
+In the code editor, implement the pay_bill(balance: int, bill: int) -> int function. It accepts two parameters, balance and bill, where balance is the current account balance and bill is the amount of the bill that needs to be paid.
+
+If the balance is greater than or equal to the bill, the function should return the new balance after subtracting the bill from the balance. Otherwise, the function should return the balance without making any changes.
+
+Given code;
+def pay_bill(balance: int, bill: int) -> int:
+
+
+# do not modify below this line
+print(pay_bill(100, 50))
+print(pay_bill(100, 100))
+print(pay_bill(100, 150))

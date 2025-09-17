@@ -1,0 +1,21 @@
+Challenge
+Implement the discount_applies(age: int) -> bool 
+function. It accepts an integer age and should 
+return True if the age is less than 18, or the 
+age is greater than or equal to 65. Otherwise, 
+it should return False.
+
+
+
+Given code is :
+def discount_applies(age: int) -> bool:
+
+
+
+
+# don't modify this code below this line
+print(discount_applies(17))
+print(discount_applies(18))
+print(discount_applies(40))
+print(discount_applies(65))
+print(discount_applies(70))
