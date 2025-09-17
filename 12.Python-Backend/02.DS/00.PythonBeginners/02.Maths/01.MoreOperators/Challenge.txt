@@ -1,0 +1,7 @@
+Challenge
+You are given three variables, a, b, and c. Print the following numbers in order:
+
+The product of a and b, floor divided by c
+The remainder of the product of a and b divided by c
+The result of raising a to the power of b.
+The result of raising b to the power of c.

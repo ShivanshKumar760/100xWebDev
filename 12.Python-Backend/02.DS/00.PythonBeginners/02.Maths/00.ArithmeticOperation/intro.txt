@@ -1,0 +1,20 @@
+Arithmetic Operators
+Arithmetic operators are used to perform mathematical operations like addition, subtraction, multiplication, division, and more.
+
+Addition +: Adds two operands together.
+Subtraction -: Subtracts the second operand from the first.
+Multiplication *: Multiplies two operands.
+Division /: Divides the first operand by the second. The result is always a float.
+x, y = 3, 6
+
+print(x + y) # Output: 9
+
+print(x - y) # Output: -3
+
+print(x * y) # Output: 18
+
+print(x / y) # Output: 0.5
+If we divide y by x, the result will be 2.0 and not 2. This is because the result of division is always a float in Python.
+
+
+For the other arithmetic operators, the result will be an integer if both operands are integers. If one of the operands is a float, the result will be a float.

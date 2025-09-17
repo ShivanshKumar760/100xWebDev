@@ -1,0 +1,7 @@
+Challenge
+In the code editor, there are 4 variables, a, b, c, and d. Print the following:
+
+The logical AND of a and b.
+The logical AND of b and c.
+The logical AND of c and d.
+The logical AND of a, b, c, and d.

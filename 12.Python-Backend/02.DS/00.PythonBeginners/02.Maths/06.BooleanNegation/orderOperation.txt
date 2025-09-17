@@ -1,0 +1,5 @@
+
+What are the order of operations?
+All logical operators have a specific order of operations. The order of operations for logical operators is NOT, AND, OR. This means that NOT is always performed first, then AND, and finally OR.
+
+That said, as expressions grow larger, it's best to use parentheses to make the order of operations clear. This prevents unintended bugs and makes code more readable for others.

@@ -1,0 +1,7 @@
+Challenge
+In the code editor, there are 4 variables, a, b, c, and d. Print the following:
+
+The logic OR of a and b.
+The logic OR of b and c.
+The logic OR of c and d.
+The logic OR of a, b, c, and d.

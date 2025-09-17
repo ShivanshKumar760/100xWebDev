@@ -1,0 +1,5 @@
+Good question! The order of operations for these operators is as follows:
+
+Exponentiation **
+Floor Division // and Modulus %
+In summary, we can still follow PEMDAS, and assume that floor division and modulus have the same precedence as multiplication and division.

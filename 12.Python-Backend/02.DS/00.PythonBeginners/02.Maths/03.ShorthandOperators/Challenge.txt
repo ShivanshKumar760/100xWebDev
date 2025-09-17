@@ -1,0 +1,6 @@
+Challenge
+In the code editor there is a variable called number. Use the shorthand operators to:
+
+Add 5 to number and print the result.
+Subtract 2 from number and print the result.
+Add number to itself and print the result. (Yes, you can add a variable to itself.)

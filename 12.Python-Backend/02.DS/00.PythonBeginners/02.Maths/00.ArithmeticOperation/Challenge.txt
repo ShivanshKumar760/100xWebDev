@@ -1,0 +1,8 @@
+Challenge
+In the code editor, there are some integers and floats declared. Print the following in order:
+
+The sum of the values (addition)
+0 minus the sum of the values
+The product of the values (multiplication)
+The sum of the values divided by the product of the values
+Hint: You are free to declare additional variables if it's helpful.

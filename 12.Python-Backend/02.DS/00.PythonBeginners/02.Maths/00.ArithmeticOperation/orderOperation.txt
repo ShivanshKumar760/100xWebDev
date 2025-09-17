@@ -1,0 +1,10 @@
+What about order of operations?
+I'm glad you asked! The order of operations in Python is the same as in mathematics. The acronym PEMDAS can help you remember the order:
+
+Parentheses
+Exponents
+Multiplication and Division (from left to right)
+Addition and Subtraction (from left to right)
+For example, in the expression 2 + 3 * 4, the multiplication is done first, then the addition. The result is 14.
+
+To specify the order of operations, you can use parentheses. For example, (2 + 3) * 4 will result in 20.

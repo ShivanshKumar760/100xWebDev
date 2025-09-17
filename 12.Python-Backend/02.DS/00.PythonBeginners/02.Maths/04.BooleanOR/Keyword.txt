@@ -1,0 +1,7 @@
+What is a keyword?
+A keyword is a reserved word in a programming 
+language that has a specific meaning and cannot be 
+used for any other purpose. For example, in Python, 
+the keyword or is used to perform a logical OR 
+operation.
+
