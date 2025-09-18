@@ -1,0 +1,6 @@
+The scope of a while loop is the same as an if statement, 
+so just like if statements, loops do not create their own scope. 
+All variables declared within the while loop are accessible outside of the loop. 
+Loops share the same scope as the function they are in. 
+Or the global scope if they are not in a function.
+

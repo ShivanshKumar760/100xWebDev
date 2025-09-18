@@ -1,0 +1,9 @@
+While Loops Multiples
+In the code editor, can you use a while loop to print all multiples of 10 from 10 to 90 in order (including 10 and 90)?
+
+The basic structure of a while loop in Python is shown below for your reference.
+
+i = 0
+while i < 5:
+    print("I love Python!")
+    i += 1

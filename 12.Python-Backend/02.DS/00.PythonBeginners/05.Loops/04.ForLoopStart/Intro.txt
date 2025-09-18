@@ -1,0 +1,11 @@
+For Loops Start
+It would be very limiting if for loops could only start at 0. Well the good news is that they don't have to! You can start a for loop at any number you want. Simply pass two arguments in to the range() function.
+
+i = 2
+while i < 5:
+    print(i)
+    i += 1
+
+for i in range(2, 5):
+    print(i)
+The above two loops are equivalent. The first parameter to the range() function is the starting number, and the second parameter is the ending number. The ending number is not included in the sequence. Each loops will print the numbers 2 through 4.

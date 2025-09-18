@@ -1,0 +1,19 @@
+While Loops
+What if we really love Python and we want to print so 5 times:
+
+print("I love Python!")
+print("I love Python!")
+print("I love Python!")
+print("I love Python!")
+print("I love Python!")
+The above code is sufficient. But is there a better way? Yes! We can use a while loop.
+
+i = 0
+while i < 5:
+    print("I love Python!")
+    i += 1
+Pay close attention to each line above. It's kind of like a repeating if statement. The code block under the while statement will run zero or more times, as long as the condition i < 5 is True. The i += 1 line is important because it increments the value of i by 1 each time the code block runs. If we didn't have this line, the loop would run forever!
+
+The variable i starts at 0, then is 1, then 2, then 3, then 4. When i is 5, the condition i < 5 is no longer True, so the loop stops. The loop is executed 5 times.
+
+Also note that just like with if statements, whitespace matters. Make sure the code that belongs to the loops is indented.

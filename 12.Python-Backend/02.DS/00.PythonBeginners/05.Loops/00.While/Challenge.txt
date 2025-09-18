@@ -1,0 +1,2 @@
+Challenge
+In the code editor, use a loop to print "I know how to use while loops" exactly 12 times.

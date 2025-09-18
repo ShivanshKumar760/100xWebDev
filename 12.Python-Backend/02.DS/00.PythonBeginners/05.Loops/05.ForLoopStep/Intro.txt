@@ -1,0 +1,15 @@
+For Loops Step
+With for loops we can also specify how much we want to increment the variable by on each iteration of the loop. This is called the step. By default, the step is 1. If we want to increment by a different number, we can add a third parameter to the range() function.
+
+i = 0
+while i < 10:
+    print(i)
+    i += 2
+
+for i in range(0, 10, 2):
+    print(i)
+The above two loops are equivalent. Each loop will print the numbers 0, 2, 4, 6 and 8.
+
+The 0 passed into the range() function is the starting number.
+The 10 passed into the range() function is the ending number. The loop will stop once it reaches or exceeds this number. Meaning that the number 10 is not included in the sequence.
+The 2 passed into the range() function is the step. This is how much the variable will increment by on each iteration of the loop.

@@ -1,0 +1,5 @@
+There is a shortcut in Python for iterating through a sequence in reverse order. You can use the function reversed() to reverse a sequence.
+
+for i in range(10): will iterate from 0 to 9.
+
+for i in reversed(range(10)): will iterate from 9 to 0.

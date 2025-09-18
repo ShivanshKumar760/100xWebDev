@@ -1,0 +1,9 @@
+While Loops Counting
+In the code editor, can you use a while loop to print the digits from 0 to 9 in order (including 0 and 9)? Your loop should execute 10 times.
+
+The basic structure of a while loop in Python is shown below for your reference.
+
+i = 0
+while i < 5:
+    print("I love Python!")
+    i += 1
