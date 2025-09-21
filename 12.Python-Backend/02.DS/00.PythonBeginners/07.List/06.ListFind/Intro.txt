@@ -1,0 +1,7 @@
+List Find
+We learned that we can determine if a list contains a specific element with the in operator. We can also find the index of an element in a list using the index() function.
+
+my_list = [1, 2, 3, 4, 5, 3]
+
+print(my_list.index(3))  # Output: 2
+The above code snippet will print the index of the first occurence of the element 3 in the list my_list. There are two 3s in the list, but the first one is at index 2, so 2 is printed. If the element is not present in the list, a ValueError will be raised.

@@ -1,0 +1,15 @@
+List Append
+We can do more than just change individual elements within a list. We can also add new elements to the end of a list using the append() function.
+
+my_list = [1, 2, 3]
+
+print(my_list)  # Output: [1, 2, 3]
+
+my_list.append(4)
+
+print(my_list)  # Output: [1, 2, 3, 4]
+A few things to notice:
+
+We can print an entire list at once.
+The append() function adds an element to the end of the list. This is not a separate function, it's called with a period after the list name (.append()). This is called a method. It is a function that is associated with a specific object (in this case, a list is an object).
+After calling append, the original list has been modified to include the new element at the end. The length increased from 3 to 4.

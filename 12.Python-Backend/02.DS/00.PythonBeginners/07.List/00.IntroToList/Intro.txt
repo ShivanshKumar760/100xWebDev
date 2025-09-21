@@ -1,0 +1,30 @@
+Intro to Lists
+In Python a list is a collection of items that are stored in a specific order.
+
+my_list = [1, 2, 3]
+
+print(len(my_list))  # Output: 3
+
+print(my_list[0])  # Output: 1
+print(my_list[1])  # Output: 2
+print(my_list[2])  # Output: 3
+As you can see, we can access individual elements in the list by indexing it just like with a string. We can also get the number of elements within the list by calling the len() function.
+
+But there is a key difference between lists and strings. Lists are mutable, meaning we can change the values of the elements in the list.
+
+my_list = [1, 2, 3, 4, 5]
+
+my_list[0] = 10
+
+print(my_list[0])  # Output: 10
+Lists can also store more than just numbers, they can store everything from strings to other lists.
+
+my_list = ["I", "am", "a", "list"]
+
+print(my_list[0])  # Output: I
+print(my_list[1])  # Output: am
+print(my_list[2])  # Output: a
+print(my_list[3])  # Output: list
+We can even mix and match different types of elements in a list. This is generally not recommended, but it is possible.
+
+my_list = [1, "Hello", 3.14, True]

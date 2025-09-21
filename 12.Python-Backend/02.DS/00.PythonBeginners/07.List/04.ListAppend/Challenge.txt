@@ -1,0 +1,3 @@
+Challenge
+Implement a function called append_to_list(my_list: List[int], elements: List[int]) -> List[int]. It should append each number from elements to the end of my_list and return the modified list.
+

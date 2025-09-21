@@ -1,0 +1,11 @@
+List Functions
+Python also provides some built in functions to get the sum, minimum, and maximum of a list:
+
+my_list = [1, 2, 3, 4, 5]
+
+print(sum(my_list))  # Output: 15
+print(min(my_list))  # Output: 1
+print(max(my_list))  # Output: 5
+The sum() function returns the sum of all the elements in the list.
+The min() function returns the smallest element in the list.
+The max() function returns the largest element in the list.

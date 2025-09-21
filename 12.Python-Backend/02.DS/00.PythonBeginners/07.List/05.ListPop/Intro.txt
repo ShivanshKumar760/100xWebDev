@@ -1,0 +1,20 @@
+List Pop
+We can also remove elements from a list using the pop() function.
+
+my_list = [1, 2, 3]
+
+my_list.pop()
+
+print(my_list)  # Output: [1, 2]
+By default, pop() removes the last element from the list. We can also specify an index to remove a specific element, as shown below.
+
+my_list = [1, 2, 3]
+
+my_list.pop(0)
+
+print(my_list)  # Output: [2, 3]
+
+my_list.pop(0)
+
+print(my_list)  # Output: [3]
+Notice that we called pop(0) twice to remove the first two elements from the list. After removing the first element, the second element becomes the first element. So we call pop(0) again to remove the new first element.

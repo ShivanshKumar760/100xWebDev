@@ -1,0 +1,5 @@
+Challenge
+Implement the find_index(nums: List[int], target: int) -> int function. It should return the index of the first occurrence of the target number in the list. You may assume that the target number will always be present in the list.
+
+If you want a challenge, try to implement the function without using the built-in index() method.
+
