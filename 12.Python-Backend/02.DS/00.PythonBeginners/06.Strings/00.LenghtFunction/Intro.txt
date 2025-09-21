@@ -1,0 +1,6 @@
+Length Function
+Suppose we had a string like my_str = "NeetCode" and we wanted to know how many characters are in the string. We can use a built-in function called len() to find the length of a string (and many other data types as we will see).
+
+my_str = "NeetCode"
+print(len(my_str))  # Output: 8
+The function len() returns the number of characters in the string. In this case, the string "NeetCode" has 8 characters.

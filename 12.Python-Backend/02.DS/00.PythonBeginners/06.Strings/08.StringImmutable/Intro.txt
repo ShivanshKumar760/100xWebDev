@@ -1,0 +1,18 @@
+Strings are Immutable
+It's important to know that whenever you slice a string, you are not modifying the underlying string. Instead, you are creating a new string with the sliced characters. This is because strings are immutable in Python, which means they cannot be changed after they are created.
+
+message = "I will never change."
+
+message[0] = "X" # This will cause an error
+In the above code, we try to reassign just the first character of the string. This will cause a TypeError because strings are immutable. We cannot change individual characters, we can only reassign the entire string.
+
+If we wanted to create a new string with the second character removed, we can accomplish this by slicing and concatenation.
+
+
+message = "I will never change."
+
+before_second = message[:1] # "I"
+after_second = message[2:]  # "will never change."
+
+new_message = before_second + after_second
+Above, we removed the second character from the string (which was the space " "), and concatenated the two parts together to create a new string.

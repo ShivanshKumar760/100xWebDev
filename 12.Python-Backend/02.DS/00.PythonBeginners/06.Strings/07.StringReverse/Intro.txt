@@ -1,0 +1,21 @@
+Reversing a String
+We can also use slicing to reverse a string. By not specifying the starting index or the ending index, and setting the step to -1, the string will be reversed.
+
+Take a look at the example below:
+
+my_string = "Hello"
+
+print(my_string[::-1])  # Output: olleH
+Notice that we have two colons in the slicing syntax. This will make more sense if you look at the below example:
+
+my_string = "Hello"
+start, end, step = 1, 4, 1
+
+print(my_string[start:end:step])   # Output: ell
+
+start, end, step = 3, 0, -1
+
+print(my_string[start:end:step]) # Output: lle
+The value before the first colon is the starting index, the value after the first colon is the ending index, and the value after the second colon is the step. If the step is negative, the string will be reversed.
+
+Remember that the starting index is inclusive, and the ending index is exclusive, even when the step is negative.

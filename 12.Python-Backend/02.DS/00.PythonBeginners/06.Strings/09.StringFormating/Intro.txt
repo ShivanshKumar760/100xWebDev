@@ -1,0 +1,25 @@
+String Formatting
+We saw that we can concatenate strings using the + operator. However, this can be cumbersome when we have many strings to concatenate. Python provides a more elegant way to format strings using the format method.
+
+name = "Alice"
+age = 25
+
+msg = "Hello, {}. You are {} years old.".format(name, age)
+
+print(msg)  # Output: Hello, Alice. You are 25 years old.
+In the above code, we have a string with two placeholders: {}. We then call the format method on the string and pass in the values we want to replace the placeholders with. The values are passed in the order they are to be inserted. The number of placeholders must match the number of arguments passed to the format method.
+
+You can also use the index of the placeholders to specify the order of the arguments.
+
+name = "Alice"
+age = 25
+
+msg = "Hello, {1}. You are {0} years old.".format(age, name)
+
+print(msg)  # Output: Hello, Alice. You are 25 years old.
+An even more concise way to format strings is to use f-strings. These are prefixed with an f before the string and allow you to insert variables directly into the string.
+
+name = "Alice"
+age = 25
+
+msg = f"Hello, {name}. You are {age} years old."

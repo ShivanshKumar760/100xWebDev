@@ -1,0 +1,30 @@
+String Looping Shorthand
+Consider the following code:
+
+my_string = "Hello"
+
+for i in range(len(my_string)):
+    print(i, my_string[i])
+The output would be:
+
+0 H
+1 e
+2 l
+3 l
+4 o
+It prints the index of each character in the string along with the character itself.
+
+But if we don't explicitly need the index, we can use a shorthand to loop through each character in the string:
+
+my_string = "Hello"
+
+for char in my_string:
+    print(char)
+This code will output:
+
+H
+e
+l
+l
+o
+Directly using the in keyword allows us to iterate through each character of the string without needing to use the index. We used the name char for readability, but you can use any name you want, like c or i.

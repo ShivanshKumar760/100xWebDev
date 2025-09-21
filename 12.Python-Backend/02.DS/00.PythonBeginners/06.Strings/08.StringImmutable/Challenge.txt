@@ -1,0 +1,12 @@
+Challenge
+Implement the function remove_fourth_character(word: str) -> str, which removes the fourth character from the string and returns the new string. You may assume that the length of the string is greater than 4.
+
+
+Given Code:
+def remove_fourth_character(word: str) -> str:
+    pass
+
+
+# do not modify below this line
+print(remove_fourth_character("NeetCode"))
+print(remove_fourth_character("Hello"))

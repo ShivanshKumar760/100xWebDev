@@ -1,0 +1,9 @@
+String Slicing Part 1
+If we only want to access a portion of a string we can use slicing. Slicing allows us to extract a substring from a string, by specifying a range of indices.
+
+my_string = "Hello, World!"
+
+start, end = 1, 5
+
+print(my_string[start:end])  # Output: ello
+In this example, we are extracting the substring from index 1 to 5 (not including 5) from the string "Hello, World!".

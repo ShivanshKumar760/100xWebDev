@@ -1,0 +1,7 @@
+String Concatenation
+In Python, concatenation is the process of combining two or more strings into a single string. Python provides the + operator for concatenating strings. When you use the + operator with two strings, Python joins them together to create a new string.
+
+str1 = "Hello, "
+str2 = "world!"
+print(str1 + str2) # Output: Hello, world!
+In this example, str1 and str2 are concatenated together using the + operator, resulting in the string "Hello, world!".

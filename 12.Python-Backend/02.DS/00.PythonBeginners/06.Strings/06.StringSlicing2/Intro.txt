@@ -1,0 +1,23 @@
+String Slicing Part 2
+With string slicing we are actually not required to specify either the start or the end index.
+
+If we don't specify the start, it's equivalent to starting from the beginning of the string.
+
+my_string = "NeetCode"
+
+print(my_string[:3])  # Output: Nee
+
+print(my_string[0:3]) # Output: Nee
+If we don't specify the end, it's equivalent to ending at the end of the string.
+
+my_string = "NeetCode"
+
+print(my_string[4:])  # Output: Code
+
+print(my_string[4:8]) # Output: Code
+If we don't specify either, we get the entire string.
+
+my_string = "NeetCode"
+
+print(my_string[:])  # Output: NeetCode
+print(my_string)     # Output: NeetCode

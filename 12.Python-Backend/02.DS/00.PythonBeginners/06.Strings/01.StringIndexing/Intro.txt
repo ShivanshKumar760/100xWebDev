@@ -1,0 +1,25 @@
+String Indexing
+Suppose we want to access individual characters from a string. We can do this by indexing the string.
+
+my_str = "Hello"
+print(my_str[0])  # Output: H
+print(my_str[1])  # Output: e
+print(my_str[2])  # Output: l
+print(my_str[3])  # Output: l
+print(my_str[4])  # Output: o
+Notice that we place square brackets after the variable name and inside the brackets, we put the index of the character we want to access.
+
+0	1	2	3	4
+H	e	l	l	o
+The above string is of length 5. To access the first character of the string, we use the index 0, for the second we use index 1, for the third we use index 2, and so on. The last index of the word is therefore not 5, but 4.
+
+This is confusing for beginners to programming, but it is a common practice in most programming languages. It is called zero-based indexing.
+
+The following code will cause an error:
+
+my_str = "Hello"
+
+print(my_str[5])  # IndexError: string index out of range
+
+length = len(my_str)   # length = 5
+print(my_str[length])  # IndexError: string index out of range

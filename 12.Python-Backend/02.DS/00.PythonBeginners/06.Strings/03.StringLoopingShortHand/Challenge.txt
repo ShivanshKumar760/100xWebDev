@@ -1,0 +1,12 @@
+Challenge
+Implement a function called print_string_characters(word1: str, word2: str) -> None. It should print the characters of word1 separately, and then print the characters of word2 separately. Use the shorthand method to loop through each character in each word.
+
+Given Code:
+def print_string_characters(word1: str, word2: str) -> None:
+    pass
+
+
+
+
+# do not modify below this line
+print_string_characters("Hello, World!", "Good Job!")

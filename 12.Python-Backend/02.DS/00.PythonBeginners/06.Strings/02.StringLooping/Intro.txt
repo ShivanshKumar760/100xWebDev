@@ -1,0 +1,13 @@
+String Looping
+What if we want to access each character in a string separately? With our knowledge of loops, indexing and the len() function we can now accomplish this.
+
+my_string = "Hello, World!"
+
+length = len(my_string) # 13
+
+for i in range(length):
+    print(my_string[i])
+
+Remember that the range(13) function will generate a sequence of numbers from 0 to 12, not including 13.
+This is perfect, the first character of our string is at index 0, and the last character of our string is at index 12.
+We can now use the index i to access and print each character of the string.

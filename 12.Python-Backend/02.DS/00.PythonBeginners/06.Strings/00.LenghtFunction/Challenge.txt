@@ -1,0 +1,13 @@
+Challenge
+Implement a function called get_longer_word(word1: str, word2: str) -> str. It takes two words (strings) as parameters, and returns the longer word. If the words are the same length, return the first word.
+
+Given Code:
+def get_longer_word(word1: str, word2: str) -> str:
+    pass
+
+
+
+# do not modify below this line
+print(get_longer_word("yellow", "orange"))
+print(get_longer_word("red", "blue"))
+print(get_longer_word("green", "blue"))
