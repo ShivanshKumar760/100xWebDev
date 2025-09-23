@@ -1,0 +1,2 @@
+Why can't we declare an empty set with curly braces?
+If we used empty curly braces {}, it would not have declared a set. That's because Python uses curly braces to declare an empty dictionary. A dictionary is a data structure that stores key-value pairs. We will learn more about dictionaries soon.
