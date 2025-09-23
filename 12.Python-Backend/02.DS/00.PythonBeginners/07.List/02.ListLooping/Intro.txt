@@ -15,4 +15,6 @@ my_list = [1, 2, 3, 4, 5]
 
 for element in my_list:
     print(element)
+
+    
 Both of these methods will print each element of the list on a separate line. If we don't need the index of the element, the second method is generally preferred since it is more concise.
