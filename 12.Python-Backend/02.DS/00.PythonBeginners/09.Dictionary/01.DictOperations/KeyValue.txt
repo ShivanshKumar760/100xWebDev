@@ -1,0 +1,3 @@
+Are key-value pairs in a dict ordered?
+In Python 3.7 and later, dictionaries are ordered by the order in which they were inserted. 
+This means that the order of key-value pairs in a dictionary is preserved.

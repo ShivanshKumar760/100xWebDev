@@ -1,0 +1,28 @@
+Dict Looping
+You can use len() to get the length of a dictionary. This will return the number of key-value pairs in the dictionary.
+
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+print(len(my_dict)) # Output: 3
+But just like with sets, the length of a dict won't help us to loop over it. The good news is that looping over a dictionary is very similar to looping over a set.
+
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+for key in my_dict:
+    value = my_dict[key]
+    print(key, value)
+By using the for loop, we can iterate over the keys in the dictionary by using the in operator. We can then use the key to access the value associated with that key.
+
+We can also use the items() method to loop over both the keys and values at the same time.
+
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+for key, value in my_dict.items():
+    print(key, value)
+This is a bit more concise, but it's up to you which method you prefer. While we named the variables key and value, you can name them whatever you like. Just know that with items() you need to have two variables to unpack the key-value pair. The first will be the key, and the second will be the value.
+
+Challenge
+Implement the following two functions:
+
+get_dict_keys(age_dict: Dict[str, int]) -> List[str] should take a dictionary of names and ages and return a list of the names.
+get_dict_values(age_dict: Dict[str, int]) -> List[int] should take a dictionary of names and ages and return a list of the ages.

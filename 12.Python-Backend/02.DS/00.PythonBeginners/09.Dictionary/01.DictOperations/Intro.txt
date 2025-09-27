@@ -1,0 +1,28 @@
+Dict Operations
+Dictionaries can't contain duplicate keys, just like sets.
+
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+print(my_dict["a"]) # Output: 1
+
+my_dict["a"] = 4
+
+print(my_dict["a"]) # Output: 4
+As shown above, if we assign the same key a new value, the old value is overwritten.
+
+The values within a dictionary can be of any type, including lists, sets, and even other dictionaries.
+
+my_dict = {"a": [1, 2, 3], "b": {4, 5, 6}, "c": {"x": 7, "y": 8, "z": 9}}
+
+print(my_dict["a"]) # Output: [1, 2, 3]
+print(my_dict["b"]) # Output: {4, 5, 6}
+print(my_dict["c"]) # Output: {"x": 7, "y": 8, "z": 9}
+The keys within a dictionary must be unique, but the values can be duplicated.
+
+my_dict = {"a": 1, "b": 1, "c": 1} # this is valid
+To check if a dictionary contains a key, you can use the in keyword.
+
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+print("a" in my_dict) # Output: True
+print("d" in my_dict) # Output: False
