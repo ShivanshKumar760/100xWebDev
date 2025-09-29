@@ -1,0 +1,27 @@
+Challenge
+Implement the following two functions:
+
+
+
+read_integer() -> int: This function should read an integer from the user and return it. The prompt should be empty.
+read_float() -> float: This function should read a floating point number from the user and return it. The prompt should be empty.
+
+
+
+Given Code:
+def read_integer() -> int:
+    pass
+
+
+def read_float() -> float:
+    pass
+
+
+# do not modify below this line
+print(read_integer())
+print(read_integer())
+print(read_integer())
+
+print(read_float())
+print(read_float())
+print(read_float())

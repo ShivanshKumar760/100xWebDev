@@ -1,0 +1,11 @@
+Parse Input
+Sometimes we have to do more than just convert the input to a single type. We might need to restructure the input in some way. This is called parsing the input.
+
+Suppose you read a list of integers separated by commas into a string, but you want to store them as a list. You can use the split() method to split the string by commas. This will convert "1,2,3" into a list of strings ["1", "2", "3"].
+
+number_string = "1,2,3"
+
+string_list = number_string.split(",")
+
+print(string_list) # Output: ['1', '2', '3']
+The above code will split the numbers by the "," substring, and store each number as a string in the list string_list, which is a list of strings. In this case, the "," is considered the delimiter.

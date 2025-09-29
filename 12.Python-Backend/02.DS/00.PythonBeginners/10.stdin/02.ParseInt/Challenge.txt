@@ -1,0 +1,16 @@
+Challenge
+Implement the read_integers() -> List[int] function. It should read a line from stdin, without printing anything, and return a list of integers. You may assume every line will be in the following format, where the numbers are separated by commas:
+
+1,2,3,4,5
+
+Given Code:
+from typing import List
+
+def read_integers() -> List[int]:
+    pass
+        
+
+# do not modify the code below
+print(read_integers())
+print(read_integers())
+print(read_integers())

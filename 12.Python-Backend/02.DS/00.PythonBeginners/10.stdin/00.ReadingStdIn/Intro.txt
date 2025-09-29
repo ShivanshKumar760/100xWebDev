@@ -1,0 +1,15 @@
+Reading Input
+So far we have only printed output to the console, but what if we want to take input from the console?
+
+In Python, the input() function is used to read input to the program while the program is running. This input comes from a stream of data called standard input or stdin. This can either mean the data a user types in manually into the terminal (console) or input that is supplied to the program before it is run.
+
+In this course, we will be directly supplying input to your program to simulate user input.
+
+user_input = input("Enter some text: ") 
+
+print(user_input) # This will print the input to the console
+In the above code, input() will print the string "Enter some text: " to the console and read one line of input from stdin. The input will be in the form of a string and will be stored in the variable user_input.
+
+When input() prints text, the following print statement will be on the same line as the prompt. So if the input was "some text" in the above example, the output would be:
+
+Enter some text: some text

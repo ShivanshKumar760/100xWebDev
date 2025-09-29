@@ -1,0 +1,9 @@
+Why doesn't input print on a different line?
+There is a special character in programming called the newline character \n. This character is used to move the cursor to the next line, similar to how you would press the Enter key on your keyboard.
+
+Even though it's called the "newline" character, it's actually two characters: a backslash \ and the letter n. When you see \n in a string, it tells Python to move to the next line.
+
+By default, Python adds a newline character to the end of the string when it calls print() to the console.
+
+The input() function does not do this. It prints to the console without a newline character, so the next print statement will be on the same line.
+
