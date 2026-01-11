@@ -1,0 +1,233 @@
+Interfaces: Pure abstraction, only method signatures (until Java 8)
+
+
+interface Drawable {
+    void draw();                    // Abstract method (implicitly public abstract)
+    default void print() {          // Default method (Java 8+)
+        System.out.println("Printing...");
+    }
+    static void info() {            // Static method (Java 8+)
+        System.out.println("Drawable interface");
+    }
+}
+
+class Rectangle implements Drawable {
+    @Override
+    public void draw() {
+        System.out.println("Drawing rectangle");
+    }
+}
+
+
+Let me explain "implicitly public abstract" and what "public abstract" means in Java.
+What is "public abstract"?
+"public abstract" refers to methods that are:
+
+public - accessible from anywhere
+abstract - have no implementation (no method body)
+
+Where do we see "implicitly public abstract"?
+This happens in interfaces - all methods in interfaces are implicitly public abstract (unless they're default or static).
+
+
+Simple Example:
+java// Interface methods are implicitly public abstract
+interface Drawable {
+    void draw();        // This is implicitly "public abstract void draw();"
+    void resize();      // This is implicitly "public abstract void resize();"
+}
+
+// This is exactly the same as writing:
+interface Drawable {
+    public abstract void draw();
+    public abstract void resize();
+}
+
+
+
+Detailed Explanation:
+In Interfaces:
+interface Animal {
+    // All these are implicitly public abstract:
+    void eat();              // = public abstract void eat();
+    void sleep();            // = public abstract void sleep();
+    void makeSound();        // = public abstract void makeSound();
+    
+    // You CAN write it explicitly, but it's redundant:
+    public abstract void breathe();  // Same as just "void breathe();"
+}
+In Abstract Classes:
+abstract class Shape {
+    // Must explicitly declare as public abstract:
+    public abstract void draw();        // Must be explicit
+    public abstract double getArea();   // Must be explicit
+    
+    // Regular concrete method:
+    public void display() {
+        System.out.println("This is a shape");
+    }
+}
+
+
+Complete Example:
+// Interface - methods are implicitly public abstract
+interface Vehicle {
+    void start();           // implicitly public abstract
+    void stop();            // implicitly public abstract
+    void accelerate();      // implicitly public abstract
+    
+    // Default method (Java 8+) - has implementation
+    default void honk() {
+        System.out.println("Vehicle is honking");
+    }
+    
+    // Static method (Java 8+) - has implementation
+    static void showInfo() {
+        System.out.println("This is a vehicle interface");
+    }
+}
+
+// Abstract class - must explicitly declare abstract methods
+abstract class AbstractVehicle {
+    protected String brand;
+    
+    // Concrete method
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+    
+    // Must explicitly declare as abstract
+    public abstract void start();      // Explicit public abstract
+    public abstract void stop();       // Explicit public abstract
+}
+
+// Implementing the interface
+class Car implements Vehicle {
+    @Override
+    public void start() {              // Must be public
+        System.out.println("Car is starting");
+    }
+    
+    @Override
+    public void stop() {               // Must be public
+        System.out.println("Car is stopping");
+    }
+    
+    @Override
+    public void accelerate() {         // Must be public
+        System.out.println("Car is accelerating");
+    }
+}
+
+// Extending abstract class
+class Motorcycle extends AbstractVehicle {
+    @Override
+    public void start() {              // Must be public
+        System.out.println("Motorcycle is starting");
+    }
+    
+    @Override
+    public void stop() {               // Must be public
+        System.out.println("Motorcycle is stopping");
+    }
+}
+
+
+Key Differences:
+Feature        Interface Methods               Abstract Class Methods
+DefaultAccess  implicitly public abstract     Must be explicitly declared
+Writing Style  void method();                 public abstract void method();
+Implementation  No body (unless default/static)No body for abstract methods
+Inheritance     implements                     extends
+
+
+Why "implicitly public abstract"?
+In Interfaces:
+
+All methods must be public - interfaces define contracts for outside use
+All methods must be abstract - interfaces don't provide implementation (except default/static)
+Java saves typing - you don't need to write "public abstract" every time
+
+Rules for Interface Methods:
+
+interface MyInterface {
+    void method1();                    // ✅ Valid - implicitly public abstract
+    public void method2();             // ✅ Valid - explicitly public (still abstract)
+    abstract void method3();           // ✅ Valid - explicitly abstract (still public)
+    public abstract void method4();    // ✅ Valid - fully explicit
+    
+    // private void method5();         // ❌ Invalid - cannot be private
+    // protected void method6();       // ❌ Invalid - cannot be protected
+    // static void method7();          // ❌ Invalid - static needs implementation
+}
+
+
+Modern Java (Java 8+) Interface Features:
+
+interface ModernInterface {
+    // Implicitly public abstract (traditional)
+    void abstractMethod();
+    
+    // Default method - has implementation
+    default void defaultMethod() {
+        System.out.println("Default implementation");
+    }
+    
+    // Static method - has implementation
+    static void staticMethod() {
+        System.out.println("Static method in interface");
+    }
+    
+    // Private method (Java 9+) - helper for default methods
+    private void helperMethod() {
+        System.out.println("Private helper method");
+    }
+}
+
+
+Summary:
+
+"public abstract" = methods with public access and no implementation
+"implicitly public abstract" = interface methods are automatically public and abstract
+In interfaces: Just write void method();
+In abstract classes: Must write public abstract void method();
+All interface methods are public - they define contracts for external use
+All traditional interface methods are abstract - no implementation body
+
+More about Interface:
+
+
+Java Interface - Brief Notes
+What is an Interface?
+An interface is a contract that defines what methods a class must implement, but doesn't provide the implementation itself.
+Key Features:
+
+Pure abstraction - only method signatures (no implementation)
+Multiple inheritance - a class can implement multiple interfaces
+All methods are implicitly public abstract
+Variables are implicitly public static final (constants only)
+Cannot be instantiated directly
+
+
+Basic Syntax:
+interface InterfaceName {
+    // Abstract methods (implicitly public abstract)
+    void method1();
+    int method2(String param);
+    
+    // Constants (implicitly public static final)
+    int CONSTANT_VALUE = 100;
+}
+
+// Implementing interface
+class MyClass implements InterfaceName {
+    @Override
+    public void method1() {
+        System.out.println("Implementation of method1");
+    }
+    
+    @Override
+    public int method2(String param) {
+        return param.length();
+    }
+}
