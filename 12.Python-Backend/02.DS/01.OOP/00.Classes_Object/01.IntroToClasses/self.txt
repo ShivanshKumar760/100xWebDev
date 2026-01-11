@@ -1,0 +1,8 @@
+n Python, self represents the instance of the class. 
+It's used to access variables and methods associated with the class. 
+When you create an object from a class, 
+Python automatically passes the object as the first argument to the __init__ method. 
+You can name this argument anything you like, but self is the convention.
+
+Don't worry if this doesn't make sense right now. We'll cover it in more detail in the 
+upcoming lessons.

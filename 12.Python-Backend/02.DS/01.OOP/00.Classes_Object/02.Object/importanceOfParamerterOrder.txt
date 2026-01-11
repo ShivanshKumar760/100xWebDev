@@ -1,0 +1,11 @@
+When creating a new superhero object, the order of values must match the __init__ method:
+
+def __init__(self, name, power, health, speed)
+Example:
+
+Correct order
+correct_hero = SuperHero("Captain America", "super strength", 110, 85)
+Incorrect order
+incorrect_hero = SuperHero(100, "Hulk", 75, "gamma radiation")
+In the incorrect example, the order of attributes is mismatched. Be careful, Python won't give us any errors for this incorrect order, which means we need to be careful when creating our objects!
+
