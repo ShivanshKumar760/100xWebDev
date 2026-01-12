@@ -18,6 +18,7 @@ class PostCreateView(APIView):
 
     def post(self, request):
         serializer = PostSerializer(data=request.data)
+        print(serializer)
 
         if serializer.is_valid():
             serializer.save()
