@@ -1,0 +1,13 @@
+Encapsulation
+Encapsulation means hiding internal details and providing controlled access to data.
+Key Rules:
+
+Make variables private
+Provide public getter/setter methods
+Add validation in setter methods
+
+Why Encapsulation?
+
+Security: Protect data from unauthorized access
+Control: Validate data before storing
+Flexibility: Change internal implementation without affecting other code

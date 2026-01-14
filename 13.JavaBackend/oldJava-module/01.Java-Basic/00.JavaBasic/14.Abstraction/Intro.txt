@@ -1,0 +1,38 @@
+Abstraction
+Abstraction hides implementation details and shows only essential features of an object to the user.
+Types of Abstraction:
+
+Abstract Classes: Cannot be instantiated, may contain abstract and concrete methods
+Interfaces: Pure abstraction, only method signatures (until Java 8)
+
+
+abstract class Shape {
+    protected String color;
+    
+    // Concrete method
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    // Abstract method - must be implemented by subclasses
+    public abstract double calculateArea();
+    public abstract void draw();
+}
+
+class Circle extends Shape {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle with area: " + calculateArea());
+    }
+}

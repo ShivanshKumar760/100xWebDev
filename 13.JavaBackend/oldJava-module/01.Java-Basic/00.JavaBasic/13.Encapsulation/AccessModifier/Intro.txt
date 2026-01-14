@@ -1,0 +1,126 @@
+Access Modifiers
+Access modifiers control who can access your class members (variables and methods).
+Types:
+
+public - Anyone can access
+private - Only the same class can access
+protected - Same package + subclasses can access
+default - Only same package can access (no keyword needed)
+
+Quick Reference Table:
+Modifier SameClass  SamePackage Subclass Everywhere
+private   ✓           ✗           ✗      ✗
+default   ✓           ✓           ✗      ✗
+(can be used in subclass if they are in same package)-default   
+protected ✓           ✓           ✓      ✗
+public    ✓           ✓           ✓      ✓
+
+
+You're absolutely right! 
+Yes, we CAN use default members and methods in subclasses, 
+but with one important condition: both the superclass and subclass must be in the same package.
+
+Updated Inheritance Access Table:
+Access Modifier SameClass SamePackage Subclass(Same Package) Subclass(Different Package) Different Package
+private          ✓         ✗           ✗                       ✗                         ✗
+default          ✓         ✓           ✓                       ✗                         ✗
+protected        ✓         ✓           ✓                       ✓                         ✗
+public           ✓         ✓           ✓                       ✓                         ✓
+
+
+What are subclas ?
+A subclass is a class that inherits properties and methods from another class (called the parent class or superclass). It's a fundamental concept in inheritance.
+Simple Definition:
+
+Subclass = Child class (inherits FROM another class)
+Superclass = Parent class (being inherited BY another class)
+
+Key Points:
+
+Uses extends keyword
+Gets all public and protected members from parent
+Can add its own new methods and variables
+Can override parent methods
+Represents "IS-A" relationship
+
+
+// Parent class (Superclass)
+class Animal {
+    protected String name;
+    
+    public void eat() {
+        System.out.println(name + " is eating");
+    }
+    
+    public void sleep() {
+        System.out.println(name + " is sleeping");
+    }
+}
+
+// Child class (Subclass)
+class Dog extends Animal {  // Dog IS-A Animal
+    
+    public Dog(String name) {
+        this.name = name;  // Inherited from Animal
+    }
+    
+    // New method specific to Dog
+    public void bark() {
+        System.out.println(name + " is barking");
+    }
+    
+    // Override parent method
+    @Override
+    public void eat() {
+        System.out.println(name + " is eating dog food");
+    }
+}
+
+// Another subclass
+class Cat extends Animal {  // Cat IS-A Animal
+    
+    public Cat(String name) {
+        this.name = name;
+    }
+    
+    // New method specific to Cat
+    public void meow() {
+        System.out.println(name + " is meowing");
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Buddy");
+        Cat cat = new Cat("Whiskers");
+        
+        // Using inherited methods
+        dog.eat();    // Calls overridden method
+        dog.sleep();  // Calls inherited method
+        dog.bark();   // Calls own method
+        
+        cat.eat();    // Calls inherited method
+        cat.sleep();  // Calls inherited method
+        cat.meow();   // Calls own method
+    }
+}
+
+
+What Subclass Gets:
+
+✓ All public methods from parent
+✓ All protected methods and variables
+✗ Private members (not directly accessible)
+✓ Can add new methods and variables
+✓ Can override parent methods
+
+Real-World Analogy:
+Think of it like family relationships:
+
+Animal is like a general category
+Dog and Cat are specific types of animals
+Dogs and cats inherit general animal behaviors (eat, sleep)
+But they also have their own unique behaviors (bark, meow)
+
+Subclasses make code reusable and organize it in a logical hierarchy!

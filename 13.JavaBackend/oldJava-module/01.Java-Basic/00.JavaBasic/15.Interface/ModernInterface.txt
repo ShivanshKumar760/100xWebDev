@@ -1,0 +1,14 @@
+interface ModernInterface {
+    // Abstract method (traditional)
+    void abstractMethod();
+    
+    // Default method (has implementation)
+    default void defaultMethod() {
+        System.out.println("Default implementation");
+    }
+    
+    // Static method
+    static void staticMethod() {
+        System.out.println("Static method in interface");
+    }
+}

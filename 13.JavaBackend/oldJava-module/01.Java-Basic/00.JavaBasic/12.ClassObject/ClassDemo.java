@@ -1,0 +1,55 @@
+class Student {
+    // Class fields (attributes)
+    private String name;
+    private int rollNumber;
+    private int age;
+
+    // Constructor
+    public Student(String name, int rollNumber, int age) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.age = age;
+    }
+
+    // Methods
+    public void displayInfo() {
+        System.out.println("Student Details:");
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+        System.out.println("Age: " + age);
+    }
+
+    public void study() {
+        System.out.println(name + " is studying");
+    }
+}
+public class ClassDemo {
+
+
+    // Main method to demonstrate object creation and usage
+    public static void main(String[] args) {
+        // Creating objects
+        Student student1 = new Student("John", 101, 20);
+        Student student2 = new Student("Alice", 102, 19);
+
+        // Using object methods
+        student1.displayInfo();
+        student1.study();
+        
+        System.out.println("\n"); // line break
+        
+        student2.displayInfo();
+        student2.study();
+    }
+}
+
+
+// Here:
+// Key Points:
+// Class: Blueprint/template for creating objects (Student)
+// Object: Instance of a class (student1, student2)
+// Fields: Data members that store object state (name, rollNumber, age)
+// Methods: Define object behavior (displayInfo(), study())
+// Constructor: Special method to initialize objects
+// Encapsulation: Private fields with public methods
+// Object Creation: Using 'new' keyword with constructor
