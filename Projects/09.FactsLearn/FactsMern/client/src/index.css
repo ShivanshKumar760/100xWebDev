@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Sono:wght@200..800&display=swap');
+
+/* body tag styling  */
+body{
+    background-color: #292524;
+    color: #fff;
+    padding: 50px 65px;
+}
+/* Header that is h1 styling */
+h1{
+    font-family: "Coiny";
+    text-transform: uppercase;
+    margin-bottom: 45px;
+    display: inline-block;
+    font-size: 45px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+/* setting unordered list to none style to remove bullet points */
+ul{
+    list-style: none;
+}
+
+/* Styling fact form */
+.fact-form{
+    background-color: #44403c;
+    margin-bottom: 45px;
+    padding: 20px 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 100px;
+}
+/* Styling fact form input and select tag */
+.fact-form input ,.fact-form select{
+    width: 250px;
+    background-color: #78716c;
+    border: none;
+    border-radius: 100px;
+    padding: 20px;
+    font-size: 18px;
+    color: white;
+    font-family: "Sono";
+}
+/* Pseudo element styling */
+.fact-form input::placeholder{
+    color: white;
+}
+/* pseudo class styling for input tag */
+.fact-form input:first-child{
+    flex-grow: 1;
+}
+
+
+/* adding hover animation using hover pseudo class */
+.fact-form select:hover{
+    transform:scale(89%);
+}
+
+/*facts-list styling*/
+.facts{
+    font-size: 25px;
+    line-height: 1.5;
+    font-family: "Sono";
+    background-color:#44403c ;
+    margin-bottom: 20px;
+    padding: 24px;
+    align-items: center;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    border-radius: 50px;
+}
+
+
+/* addding general style to all button */
+button{
+    font-family: "Coiny";
+}
+
+/* adding style to drop down selection option */
+option{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "Sono";
+    
+}
+
+/* adding style to side bar category of facts */
+.category{
+    text-transform: uppercase;
+    padding:3px 10px 0 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    margin-left: 0;
+    background-color: rgb(65, 157, 81);
+    border-radius: 50px;
+}
+
+.category-list{
+    margin-bottom: 15px;
+}
+
+/* setting main area of content to grid layout */
+main{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+/* Styling vote buttons */
+.vote-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+
+}
+
+.vote-buttons button{
+    background-color: #78716c;
+    border: none;
+    font-size: 27px;
+    border-radius: 105px;
+    color:inherit;
+    cursor: pointer;
+}
+
+.vote-buttons button:hover{
+    transform: scale(110%);
+    background-color:#604f44 ;
+}
+
+/* Styling button with same property */
+.btn{
+    border: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 17px;
+    background-image: linear-gradient(125deg,#3b82f6,rgb(240,168,24),#ef4444,#16a34a,#eab308);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+
+.btn:hover{
+    transform: scale(115%) rotate(-5deg);
+}
+
+.btn-all-categories{
+    width: 100%;
+}
+
+/* refactoring some property of btn via the btn-category class  */
+.btn-category{
+    width: 100%;
+    background-image: none;
+}
+
+.header1{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.LogoHeader{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logoImage{
+    width: 100x;
+    height: 100px;
+}

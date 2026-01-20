@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Kode+Mono:wght@400..700&family=Silkscreen:wght@400;700&family=Sixtyfour&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0D0C0C;
+  color: #fff;
+  overflow-x: hidden;
+  font-family: "Kode Mono";
+}
+html{
+  overflow-x: hidden;
+}
+.inputBox{
+  width: 100%;
+  background-color: #141414;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.inputBox input{
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+
+.btnBlue{
+  background-color: #00AEEF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.btnBlue:hover{
+  background-color: #0086b3;
+}
+
+.rightsideBanner{
+
+  height: 100%;
+  margin-left: 250px;
+}
+.grid{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px;
+}
+
+.lightMode{
+  background-color: #fff !important;
+  color: #000 !important;
+};
+
+
+.lightMode .navbar{
+  background-color: #fff;
+}
+
+.lightMode .tabs{
+  background-color: #f7f7f7;
+}
+.lightMode .tabs .tab{
+  background-color: #c2c1c1;
+  color: #000;
+}
+
+.lightMode .btn{
+  background-color: #C2C1C1;
+  color: #000;
+}
+
+
+/* Landing.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  background-color: #121212; /* Dark theme background */
+  
+}
+
+.link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+}
+.landingLogo{
+  margin-right: 100px;
+}
+.link-item {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff; /* White text */
+  background-color: #333333; /* Dark button background */
+  border-radius: 5px;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.link-item:hover {
+  transform: scale(1.1);
+  background-color: #00AEEF; /* Bright blue color on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Add an animation on page load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.landing-container {
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+
+.websiteGoal{
+  color: white;
+  font-family: "Silkscreen";
+  background-color: #121212;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+
+.landingPage-Heading{
+  font-family: "Sixtyfour";
+  font-size: x-large;
+  padding-top: 50px;
+}
+
+.typing-container {
+  text-align: center;
+  /* margin-bottom: 30px; */
+  background-color: #121212;
+  height: 5vh;
+
+}
+
+.typing-text {
+  color: #ffffff; /* White text */
+  font-size: 24px;
+  font-family:  "Silkscreen";
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #00AEEF; /* Simulate a blinking cursor */
+  padding-right: 5px;
+  animation: typing 3.5s steps(30) 1s forwards, blink 0.75s step-end infinite;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent; /* Cursor disappears */
+  }
+}
+
+
+/* Section for displaying logos as cards */
+.logos-slider {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  /* margin-top: 40px; */
+  padding: 30px;
+  background-color: #121212;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logo-card {
+  background-color: #333333;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-card:hover {
+  transform: translateX(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.logo-image {
+  max-width: 50px;
+  margin-bottom: 10px;
+}
+
+.logo-card p {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
+/* Styling the Other Product Section */
+.otherProduct {
+  font-size: 16px;
+  color: #ffffff;  /* White text */
+}
+
+.otherProduct a {
+  color: #00AEEF;  /* Light blue color for the link */
+  text-decoration: none;  /* Remove underline */
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 8px;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  /* Adding a subtle 3D effect with perspective */
+  perspective: 1000px;
+}
+
+/* Adding 3D Effect */
+.otherProduct a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);  /* Light reflection effect */
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for the link (3D effect on hover) */
+.otherProduct a:hover {
+  color: #ffffff;  /* Change text color to white on hover */
+  background-color: #00AEEF;  /* Light blue background on hover */
+  transform: translateY(-5px) rotateX(10deg) rotateY(10deg); /* 3D effect: Lift and rotate */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);  /* Shadow to simulate depth */
+}
+
+/* Hover effect on the 3D reflection effect */
+.otherProduct a:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Optional: Make the otherProduct text a bit larger */
+.otherProduct {
+  font-size: 18px;  /* Increased font size for better visibility */
+  margin-top: 20px;
+  color: #ffffff;  /* Keep the text white */
+}
+
+
+
+/* Dark Theme Styles for NoPage Component */
+.no-page-container {
+  background-color: #121212;  /* Dark background color */
+  color: #eaeaea;  /* Light text color for contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  /* Full height of the viewport */
+  text-align: center;
+  font-family: 'Arial', sans-serif;  /* Clean and simple font */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.no-page-text {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;  /* White color for the main heading */
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);  /* Light shadow for some depth */
+}
+
+.no-page-description {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #cccccc;  /* Slightly muted color for description text */
+  max-width: 600px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);  /* Shadow for description text */
+}
+
+/* Add a subtle hover effect to the heading */
+.no-page-text:hover {
+  color: #00AEEF;  /* Light blue hover color */
+  transform: translateY(-5px);  /* Lift effect on hover */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.no-page-description a {
+  color: #00AEEF;  /* Light blue color for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Link hover effect */
+.no-page-description a:hover {
+  color: #ffffff;  /* Change color on hover */
+  text-decoration: underline;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 160px;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  font-size: 35px;
+  line-height: 40px;
+  color: #ecf0f1;
+}
+
+.content__container {
+  font-weight: 600;
+  overflow: hidden;
+  height: 40px;
+  padding: 0 40px;
+}
+
+.content__container:before {
+  content: '[';
+  left: 0;
+}
+
+.content__container:after {
+  content: ']';
+  position: absolute;
+  right: 0;
+}
+
+.content__container:after,
+.content__container:before {
+  position: absolute;
+  top: 0;
+  color: #16a085;
+  font-size: 40px;
+  line-height: 40px;
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: opacity;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.content__container__text {
+  display: inline;
+  float: left;
+  margin: 0;
+}
+
+.content__container__list {
+  padding-left: 110px;
+  text-align: left;
+  list-style: none;
+  -webkit-animation-name: change;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: change;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.content__container__list__item {
+  line-height: 48px;
+  margin: 0;
+}
+
+@-webkit-keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes change {
+  0%, 12.66%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  16.66%, 29.32% {
+    transform: translate3d(0, -25%, 0);
+  }
+  33.32%, 45.98% {
+    transform: translate3d(0, -50%, 0);
+  }
+  49.98%, 62.64% {
+    transform: translate3d(0, -75%, 0);
+  }
+  66.64%, 79.3% {
+    transform: translate3d(0, -50%, 0);
+  }
+  83.3%, 95.96% {
+    transform: translate3d(0, -25%, 0);
+  }
+}
+
+@-o-keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes change {
+  0%, 12.66%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  16.66%, 29.32% {
+    transform: translate3d(0, -25%, 0);
+  }
+  33.32%, 45.98% {
+    transform: translate3d(0, -50%, 0);
+  }
+  49.98%, 62.64% {
+    transform: translate3d(0, -75%, 0);
+  }
+  66.64%, 79.3% {
+    transform: translate3d(0, -50%, 0);
+  }
+  83.3%, 95.96% {
+    transform: translate3d(0, -25%, 0);
+  }
+}
+
+@-moz-keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes change {
+  0%, 12.66%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  16.66%, 29.32% {
+    transform: translate3d(0, -25%, 0);
+  }
+  33.32%, 45.98% {
+    transform: translate3d(0, -50%, 0);
+  }
+  49.98%, 62.64% {
+    transform: translate3d(0, -75%, 0);
+  }
+  66.64%, 79.3% {
+    transform: translate3d(0, -50%, 0);
+  }
+  83.3%, 95.96% {
+    transform: translate3d(0, -25%, 0);
+  }
+}
+
+@keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes change {
+  0%, 12.66%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  16.66%, 29.32% {
+    transform: translate3d(0, -25%, 0);
+  }
+  33.32%, 45.98% {
+    transform: translate3d(0, -50%, 0);
+  }
+  49.98%, 62.64% {
+    transform: translate3d(0, -75%, 0);
+  }
+  66.64%, 79.3% {
+    transform: translate3d(0, -50%, 0);
+  }
+  83.3%, 95.96% {
+    transform: translate3d(0, -25%, 0);
+  }
+}
+
+.otherIde{
+  background-color: #0D0C0C;
+}
+
+.otherProduct{
+  background-color: #0D0C0C;
+  text-align: center;
+  margin-top: 0;
+}
+
+.tagLine{
+  width:600px ;
+}

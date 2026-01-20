@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeGym GitHub Pusher</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 400px;
+        min-height: 500px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        padding: 0;
+      }
+
+      .container {
+        padding: 24px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 16px;
+        color: #1f2937;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #374151;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.2s;
+        font-family: inherit;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      input::placeholder {
+        color: #9ca3af;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-secondary {
+        background: #f3f4f6;
+        color: #374151;
+        margin-top: 8px;
+      }
+
+      .btn-secondary:hover {
+        background: #e5e7eb;
+      }
+
+      .status {
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 16px;
+        display: none;
+      }
+
+      .status.success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+        display: block;
+      }
+
+      .status.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+        display: block;
+      }
+
+      .status.info {
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #93c5fd;
+        display: block;
+      }
+
+      .settings-status {
+        padding: 12px;
+        background: #f9fafb;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+
+      .settings-status strong {
+        color: #374151;
+      }
+
+      .settings-status span {
+        color: #10b981;
+        font-weight: 600;
+      }
+
+      .help-text {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      .divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 16px 0;
+      }
+
+      a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 16px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #f3f4f6;
+        border-top-color: #667eea;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 CodeGym Pusher</h1>
+        <p>Push your solutions to GitHub</p>
+      </div>
+
+      <div id="statusMessage" class="status"></div>
+
+      <div class="card">
+        <h2 style="font-size: 16px; margin-bottom: 16px; font-weight: 600">
+          GitHub Settings
+        </h2>
+
+        <div id="settingsStatus" class="settings-status" style="display: none">
+          <strong>Status:</strong> <span id="statusText"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="githubToken">GitHub Personal Access Token</label>
+          <input
+            type="password"
+            id="githubToken"
+            placeholder="ghp_xxxxxxxxxxxx"
+          />
+          <div class="help-text">
+            Need a token?
+            <a href="https://github.com/settings/tokens/new" target="_blank"
+              >Create one here</a
+            >
+            <br />Required scopes: <strong>repo</strong>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="githubUsername">GitHub Username</label>
+          <input type="text" id="githubUsername" placeholder="your-username" />
+        </div>
+
+        <div class="form-group">
+          <label for="repoName">Repository Name</label>
+          <input type="text" id="repoName" placeholder="codegym-solutions" />
+          <div class="help-text">Repository must already exist on GitHub</div>
+        </div>
+
+        <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+        <button id="testConnection" class="btn btn-secondary">
+          Test Connection
+        </button>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size: 16px; margin-bottom: 12px; font-weight: 600">
+          How It Works
+        </h2>
+        <ul
+          style="
+            font-size: 13px;
+            line-height: 1.6;
+            padding-left: 20px;
+            color: #4b5563;
+          "
+        >
+          <li style="margin-bottom: 8px">Solve a problem on CodeGym</li>
+          <li style="margin-bottom: 8px">Click the Verify button</li>
+          <li style="margin-bottom: 8px">
+            Once accepted, your solution is automatically pushed to GitHub!
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer">Made with ❤️ for CodeGym users</div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
