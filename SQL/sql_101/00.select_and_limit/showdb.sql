@@ -1,0 +1,2 @@
+-- SHOW DATABASES;
+-- this wont work in sqlite cause in sqlite each .db file is a database not a server with multiple databases
