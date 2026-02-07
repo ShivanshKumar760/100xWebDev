@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Dogfight - Multiplayer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+        background: #000;
+      }
+
+      #gameCanvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #ui {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        color: white;
+        font-family: monospace;
+      }
+
+      #hud {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 18px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      #crosshair {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(255, 0, 0, 0.7);
+        border-radius: 50%;
+      }
+
+      #crosshair::before,
+      #crosshair::after {
+        content: "";
+        position: absolute;
+        background: rgba(255, 0, 0, 0.7);
+      }
+
+      #crosshair::before {
+        width: 20px;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #crosshair::after {
+        width: 2px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #status {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 16px;
+        text-align: right;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      #menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        pointer-events: all;
+        border: 2px solid #00ff00;
+      }
+
+      #menu h1 {
+        color: #00ff00;
+        margin-bottom: 20px;
+        font-size: 36px;
+      }
+
+      #menu input {
+        padding: 10px;
+        font-size: 16px;
+        margin: 10px;
+        border: 2px solid #00ff00;
+        background: #000;
+        color: #00ff00;
+        border-radius: 5px;
+      }
+
+      #menu button {
+        padding: 12px 30px;
+        font-size: 18px;
+        margin: 10px;
+        background: #00ff00;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      #menu button:hover {
+        background: #00cc00;
+      }
+
+      #controls {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 14px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      #gameOver {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.95);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        pointer-events: all;
+        border: 2px solid #ff0000;
+      }
+
+      #gameOver h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      #loadingScreen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        pointer-events: all;
+        border: 2px solid #00ff00;
+      }
+
+      #loadingScreen h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .winner {
+        color: #00ff00;
+      }
+
+      .loser {
+        color: #ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="ui">
+      <div id="hud">
+        <div>Health: <span id="health">100</span>%</div>
+        <div>Speed: <span id="speed">0</span></div>
+        <div>Altitude: <span id="altitude">0</span>m</div>
+      </div>
+
+      <div id="crosshair"></div>
+
+      <div id="status">
+        <div id="connectionStatus">Disconnected</div>
+        <div id="playerCount">Players: 0/2</div>
+      </div>
+
+      <div id="controls">
+        <strong>Controls:</strong><br />
+        W/S - Pitch Up/Down<br />
+        A/D - Roll Left/Right<br />
+        Q/E - Yaw Left/Right<br />
+        SPACE - Fire<br />
+        SHIFT - Boost<br />
+        +/- - Zoom Camera<br />
+        C - Toggle Free Camera
+      </div>
+
+      <div id="menu">
+        <h1>🛩️ DOGFIGHT 🛩️</h1>
+        <p style="color: #00ff00; margin-bottom: 20px">
+          Enter game room to start
+        </p>
+        <input
+          type="text"
+          id="roomInput"
+          placeholder="Room Name"
+          value="room1"
+        />
+        <br />
+        <button id="joinBtn">JOIN BATTLE</button>
+      </div>
+
+      <div id="loadingScreen" class="hidden">
+        <h2 style="color: #00ff00">Loading F-16 Models...</h2>
+        <p style="color: #00ff00"><span id="loadingProgress">0</span>%</p>
+      </div>
+
+      <div id="gameOver" class="hidden">
+        <h2 id="resultText"></h2>
+        <button id="restartBtn">RETURN TO MENU</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+      // WebSocket connection
+      let ws = null;
+      let playerId = null;
+      let roomName = null;
+      let gameState = {
+        players: {},
+        bullets: [],
+      };
+
+      // Model loading
+      let f16ModelTemplate = null;
+      let modelsLoaded = false;
+      const loader = new THREE.GLTFLoader();
+
+      // Three.js setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        10000
+      );
+      // Start with camera behind and above the aircraft for better initial view
+      // Aircraft starts at (0, 100, 0) facing +X, so camera at negative X is behind
+      // Closer initial position for better visibility
+      camera.position.set(-60, 110, 0);
+      camera.lookAt(0, 100, 0);
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.getElementById("gameCanvas"),
+        antialias: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // Orbit controls for camera manipulation (enabled when not in game)
+      const orbitControls = new THREE.OrbitControls(
+        camera,
+        renderer.domElement
+      );
+      orbitControls.enableDamping = true;
+      orbitControls.dampingFactor = 0.05;
+      orbitControls.target.set(0, 100, 0); // Point at aircraft starting position
+      orbitControls.enabled = true; // Start enabled, will disable during gameplay
+
+      // Sky gradient effect
+      const skyColor = new THREE.Color(0x87ceeb);
+      const horizonColor = new THREE.Color(0xffffff);
+      scene.background = skyColor;
+      scene.fog = new THREE.Fog(0x87ceeb, 1000, 5000);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(100, 100, 50);
+      scene.add(directionalLight);
+
+      // Add sun
+      const sunGeometry = new THREE.SphereGeometry(50, 32, 32);
+      const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+      const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+      sun.position.set(1000, 800, -1000);
+      scene.add(sun);
+
+      // Ground
+      const groundGeometry = new THREE.PlaneGeometry(5000, 5000, 50, 50);
+      const groundMaterial = new THREE.MeshPhongMaterial({
+        color: 0x228b22,
+        wireframe: false,
+      });
+      const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = 0;
+      scene.add(ground);
+
+      // Cloud-like atmosphere
+      for (let i = 0; i < 50; i++) {
+        const cloudGeometry = new THREE.SphereGeometry(
+          Math.random() * 30 + 10,
+          8,
+          8
+        );
+        const cloudMaterial = new THREE.MeshPhongMaterial({
+          color: 0xffffff,
+          transparent: true,
+          opacity: 0.3,
+        });
+        const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        cloud.position.set(
+          Math.random() * 2000 - 1000,
+          Math.random() * 300 + 200,
+          Math.random() * 2000 - 1000
+        );
+        scene.add(cloud);
+      }
+
+      // Player aircraft
+      const playerMeshes = {};
+      const bulletMeshes = [];
+      let myAircraftMesh = null;
+      const smokeTrails = [];
+
+      // Load F-16 GLTF Model from Sketchfab
+      function loadF16Model() {
+        return new Promise((resolve, reject) => {
+          console.log("Loading F-16 GLTF model...");
+
+          // Load the actual Sketchfab F-16 model
+          loader.load(
+            "scene.gltf", // The GLTF file you uploaded
+
+            // Success callback
+            (gltf) => {
+              console.log("F-16 model loaded successfully!");
+              f16ModelTemplate = gltf.scene;
+
+              // Calculate bounding box to understand model size
+              const bbox = new THREE.Box3().setFromObject(f16ModelTemplate);
+              const size = bbox.getSize(new THREE.Vector3());
+              const center = bbox.getCenter(new THREE.Vector3());
+
+              console.log("Model dimensions:", size);
+              console.log("Model center:", center);
+
+              // CENTER THE MODEL - move it so its center is at origin
+              f16ModelTemplate.position.set(-center.x, -center.y, -center.z);
+
+              // Adjust scale to 10.0 (like pressing 7 in test.html) for maximum visibility
+              f16ModelTemplate.scale.set(10.0, 10.0, 10.0);
+
+              // Rotate to correct orientation (forward is +X in our game)
+              // The model faces -Z by default, so rotate 90° to face +X
+              f16ModelTemplate.rotation.y = Math.PI / 2;
+
+              // Enable shadows for realism
+              f16ModelTemplate.traverse((child) => {
+                if (child.isMesh) {
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                }
+              });
+
+              console.log(
+                "Model centered, scaled to 10.0x and rotated to face forward"
+              );
+              resolve(gltf);
+            },
+
+            // Progress callback
+            (xhr) => {
+              if (xhr.lengthComputable) {
+                const percent = Math.round((xhr.loaded / xhr.total) * 100);
+                document.getElementById("loadingProgress").textContent =
+                  percent;
+                console.log(`Loading: ${percent}%`);
+              }
+            },
+
+            // Error callback
+            (error) => {
+              console.error("Error loading GLTF model:", error);
+              console.log("Falling back to procedural model");
+              reject(error);
+            }
+          );
+        });
+      }
+
+      function createAircraft(color) {
+        const group = new THREE.Group();
+
+        // If we have a loaded GLTF model, clone it
+        if (f16ModelTemplate) {
+          const clone = f16ModelTemplate.clone();
+
+          // Recolor the model
+          clone.traverse((child) => {
+            if (child.isMesh && child.material) {
+              child.material = child.material.clone();
+              // Tint the material with the color
+              if (child.material.color) {
+                child.material.color.setHex(color);
+              }
+              child.material.needsUpdate = true;
+            }
+          });
+
+          group.add(clone);
+
+          console.log(
+            "Created aircraft with GLTF model, color:",
+            color.toString(16)
+          );
+
+          // Add afterburner to GLTF model
+          addAfterburner(group);
+          return group;
+        }
+
+        // FALLBACK: Enhanced procedural F-16 model
+        console.log("Using fallback procedural model");
+
+        // Materials
+        const bodyMaterial = new THREE.MeshPhongMaterial({
+          color: color,
+          shininess: 100,
+          specular: 0x444444,
+          flatShading: false,
+        });
+
+        // Simple fuselage for visibility
+        const fuselageGeometry = new THREE.BoxGeometry(10, 2, 2);
+        const fuselage = new THREE.Mesh(fuselageGeometry, bodyMaterial);
+        fuselage.castShadow = true;
+        group.add(fuselage);
+
+        // Wings
+        const wingGeometry = new THREE.BoxGeometry(2, 0.3, 8);
+        const wing = new THREE.Mesh(wingGeometry, bodyMaterial);
+        wing.castShadow = true;
+        group.add(wing);
+
+        // Tail
+        const tailGeometry = new THREE.BoxGeometry(0.5, 3, 2);
+        const tail = new THREE.Mesh(tailGeometry, bodyMaterial);
+        tail.position.set(-4, 1, 0);
+        tail.castShadow = true;
+        group.add(tail);
+
+        // Add afterburner effects
+        addAfterburner(group);
+
+        return group;
+      }
+
+      function addAfterburner(group) {
+        // Find the furthest back point of the model for afterburner placement
+        let minX = 0;
+        group.traverse((child) => {
+          if (child.isMesh) {
+            const bbox = new THREE.Box3().setFromObject(child);
+            if (bbox.min.x < minX) minX = bbox.min.x;
+          }
+        });
+
+        // If no mesh found, use default position
+        const exhaustX = minX !== 0 ? minX - 1 : -11.5;
+
+        // AFTERBURNER FLAME (hidden by default)
+        const flameGeometry = new THREE.ConeGeometry(0.9, 3.5, 8);
+        const flameMaterial = new THREE.MeshBasicMaterial({
+          color: 0xff6600,
+          transparent: true,
+          opacity: 0.85,
+        });
+        const flame = new THREE.Mesh(flameGeometry, flameMaterial);
+        flame.rotation.z = Math.PI / 2;
+        flame.position.x = exhaustX;
+        flame.visible = false;
+        group.add(flame);
+
+        // Inner flame core
+        const coreGeometry = new THREE.ConeGeometry(0.6, 3, 8);
+        const coreMaterial = new THREE.MeshBasicMaterial({
+          color: 0xffff00,
+          transparent: true,
+          opacity: 0.95,
+        });
+        const core = new THREE.Mesh(coreGeometry, coreMaterial);
+        core.rotation.z = Math.PI / 2;
+        core.position.x = exhaustX;
+        core.visible = false;
+        group.add(core);
+
+        // Store flame references for boost effect
+        group.userData.flame = flame;
+        group.userData.flameCore = core;
+      }
+
+      // Game state
+      let myAircraft = {
+        position: { x: 0, y: 100, z: 0 },
+        rotation: { x: 0, y: 0, z: 0 },
+        velocity: { x: 0, y: 0, z: 0 },
+        speed: 0,
+        health: 100,
+      };
+
+      const keys = {};
+      const maxSpeed = 5;
+      const acceleration = 0.1;
+      const turnSpeed = 0.03;
+      const boostMultiplier = 2;
+      let cameraDistance = 50; // Increased from 30 to 50 for much closer view
+
+      // Input handling
+      document.addEventListener("keydown", (e) => {
+        keys[e.key.toLowerCase()] = true;
+
+        if (e.key === " " && ws && ws.readyState === WebSocket.OPEN) {
+          e.preventDefault();
+          fireBullet();
+        }
+
+        // Toggle camera mode with 'C' key
+        if (e.key.toLowerCase() === "c") {
+          orbitControls.enabled = !orbitControls.enabled;
+          console.log(
+            "Free camera mode:",
+            orbitControls.enabled ? "ON" : "OFF"
+          );
+        }
+
+        // Camera zoom controls
+        if (e.key === "=" || e.key === "+") {
+          cameraDistance = Math.max(20, cameraDistance - 5); // Minimum distance 20
+          console.log("Camera distance:", cameraDistance);
+        }
+        if (e.key === "-" || e.key === "_") {
+          cameraDistance = Math.min(100, cameraDistance + 5); // Maximum distance 100
+          console.log("Camera distance:", cameraDistance);
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        keys[e.key.toLowerCase()] = false;
+      });
+
+      // Menu controls
+      document.getElementById("joinBtn").addEventListener("click", () => {
+        roomName = document.getElementById("roomInput").value;
+        if (roomName) {
+          connectToServer();
+        }
+      });
+
+      document.getElementById("restartBtn").addEventListener("click", () => {
+        location.reload();
+      });
+
+      function connectToServer() {
+        // Connect to local WebSocket server
+        ws = new WebSocket("ws://localhost:8080");
+
+        ws.onopen = () => {
+          console.log("Connected to server");
+          playerId = Math.random().toString(36).substr(2, 9);
+
+          document.getElementById("menu").classList.add("hidden");
+          document.getElementById("connectionStatus").textContent = "Connected";
+
+          // Disable orbit controls during gameplay
+          orbitControls.enabled = false;
+
+          // Reset aircraft position and speed when joining
+          myAircraft.position = { x: 0, y: 100, z: 0 };
+          myAircraft.rotation = { x: 0, y: 0, z: 0 };
+          myAircraft.speed = 0;
+          myAircraft.health = 100;
+
+          // Create player's own F-16 (blue for player, red for enemies)
+          myAircraftMesh = createAircraft(0x0066ff);
+
+          // CRITICAL: Position the mesh at the aircraft's altitude
+          myAircraftMesh.position.set(
+            myAircraft.position.x,
+            myAircraft.position.y,
+            myAircraft.position.z
+          );
+
+          scene.add(myAircraftMesh);
+          console.log("Player aircraft created and added to scene");
+          console.log("Aircraft position:", myAircraftMesh.position);
+          console.log("Aircraft children:", myAircraftMesh.children.length);
+
+          // Send join message
+          sendMessage({
+            type: "join",
+            room: roomName,
+            playerId: playerId,
+            position: myAircraft.position,
+            rotation: myAircraft.rotation,
+          });
+        };
+
+        ws.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            handleServerMessage(data);
+          } catch (e) {
+            console.error("Error parsing message:", e);
+          }
+        };
+
+        ws.onclose = () => {
+          console.log("Disconnected from server");
+          document.getElementById("connectionStatus").textContent =
+            "Disconnected";
+        };
+
+        ws.onerror = (error) => {
+          console.error("WebSocket error:", error);
+        };
+      }
+
+      function sendMessage(data) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify(data));
+        }
+      }
+
+      function handleServerMessage(data) {
+        if (!data.type) return;
+
+        switch (data.type) {
+          case "joined":
+            console.log("Joined room:", data.room);
+            document.getElementById(
+              "playerCount"
+            ).textContent = `Players: ${data.playerCount}/2`;
+            break;
+
+          case "roomState":
+            document.getElementById(
+              "playerCount"
+            ).textContent = `Players: ${data.playerCount}/2`;
+            break;
+
+          case "gameStart":
+            console.log("Game starting!");
+            break;
+
+          case "playerUpdate":
+            if (data.playerId !== playerId) {
+              updateRemotePlayer(data);
+            }
+            break;
+
+          case "bulletFired":
+            if (data.playerId !== playerId) {
+              createRemoteBullet(data);
+            }
+            break;
+
+          case "hit":
+            if (data.targetId === playerId) {
+              myAircraft.health = data.newHealth;
+              updateHUD();
+              if (myAircraft.health <= 0) {
+                gameOver(false);
+              }
+            }
+            break;
+
+          case "playerEliminated":
+            if (data.winnerId === playerId) {
+              gameOver(true);
+            }
+            removePlayer(data.playerId);
+            break;
+
+          case "victory":
+            gameOver(true);
+            break;
+
+          case "playerLeft":
+            removePlayer(data.playerId);
+            document.getElementById("playerCount").textContent = `Players: ${
+              Object.keys(playerMeshes).length
+            }/2`;
+            break;
+        }
+      }
+
+      function updateRemotePlayer(data) {
+        if (!playerMeshes[data.playerId]) {
+          playerMeshes[data.playerId] = createAircraft(0xff0000);
+          scene.add(playerMeshes[data.playerId]);
+        }
+
+        const mesh = playerMeshes[data.playerId];
+        mesh.position.set(data.position.x, data.position.y, data.position.z);
+        mesh.rotation.set(data.rotation.x, data.rotation.y, data.rotation.z);
+      }
+
+      function removePlayer(id) {
+        if (playerMeshes[id]) {
+          scene.remove(playerMeshes[id]);
+          delete playerMeshes[id];
+        }
+      }
+
+      function fireBullet() {
+        const bulletData = {
+          type: "bulletFired",
+          playerId: playerId,
+          position: { ...myAircraft.position },
+          rotation: { ...myAircraft.rotation },
+          id: Math.random().toString(36).substr(2, 9),
+        };
+
+        sendMessage(bulletData);
+        createBullet(bulletData);
+      }
+
+      function createBullet(data) {
+        const geometry = new THREE.SphereGeometry(0.3, 8, 8);
+        const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        const bullet = new THREE.Mesh(geometry, material);
+
+        bullet.position.set(data.position.x, data.position.y, data.position.z);
+
+        // Calculate velocity based on aircraft rotation
+        const direction = new THREE.Vector3(1, 0, 0);
+        direction.applyEuler(
+          new THREE.Euler(data.rotation.x, data.rotation.y, data.rotation.z)
+        );
+
+        bullet.userData = {
+          velocity: direction.multiplyScalar(10),
+          lifetime: 0,
+          ownerId: data.playerId,
+          id: data.id,
+        };
+
+        scene.add(bullet);
+        bulletMeshes.push(bullet);
+      }
+
+      function createRemoteBullet(data) {
+        createBullet(data);
+      }
+
+      function updatePhysics() {
+        if (!myAircraft) return;
+
+        let speedMultiplier = keys["shift"] ? boostMultiplier : 1;
+
+        // Pitch (W/S)
+        if (keys["w"]) myAircraft.rotation.x -= turnSpeed;
+        if (keys["s"]) myAircraft.rotation.x += turnSpeed;
+
+        // Roll (A/D)
+        if (keys["a"]) myAircraft.rotation.z += turnSpeed;
+        if (keys["d"]) myAircraft.rotation.z -= turnSpeed;
+
+        // Yaw (Q/E)
+        if (keys["q"]) myAircraft.rotation.y -= turnSpeed;
+        if (keys["e"]) myAircraft.rotation.y += turnSpeed;
+
+        // Update speed (always moving forward for realistic flight)
+        myAircraft.speed = Math.min(
+          maxSpeed * speedMultiplier,
+          myAircraft.speed + acceleration
+        );
+
+        // Calculate forward direction
+        const direction = new THREE.Vector3(1, 0, 0);
+        direction.applyEuler(
+          new THREE.Euler(
+            myAircraft.rotation.x,
+            myAircraft.rotation.y,
+            myAircraft.rotation.z
+          )
+        );
+
+        // Update position
+        myAircraft.position.x += direction.x * myAircraft.speed;
+        myAircraft.position.y += direction.y * myAircraft.speed;
+        myAircraft.position.z += direction.z * myAircraft.speed;
+
+        // Keep above ground
+        if (myAircraft.position.y < 20) {
+          myAircraft.position.y = 20;
+        }
+
+        // Keep in bounds
+        const boundary = 2000;
+        myAircraft.position.x = Math.max(
+          -boundary,
+          Math.min(boundary, myAircraft.position.x)
+        );
+        myAircraft.position.z = Math.max(
+          -boundary,
+          Math.min(boundary, myAircraft.position.z)
+        );
+
+        // Update camera - position BEHIND the aircraft
+        // Aircraft faces +X direction, so camera offset at -X (behind) relative to aircraft
+        const cameraOffset = new THREE.Vector3(-cameraDistance, 8, 0);
+        cameraOffset.applyEuler(
+          new THREE.Euler(
+            myAircraft.rotation.x,
+            myAircraft.rotation.y,
+            myAircraft.rotation.z
+          )
+        );
+
+        camera.position.x = myAircraft.position.x + cameraOffset.x;
+        camera.position.y = myAircraft.position.y + cameraOffset.y;
+        camera.position.z = myAircraft.position.z + cameraOffset.z;
+
+        // CRITICAL: Make camera look directly at the aircraft position
+        // This ensures the aircraft appears at the crosshair (screen center)
+        camera.lookAt(
+          myAircraft.position.x,
+          myAircraft.position.y,
+          myAircraft.position.z
+        );
+
+        // Update OrbitControls target to follow aircraft (important for smooth transitions)
+        orbitControls.target.set(
+          myAircraft.position.x,
+          myAircraft.position.y,
+          myAircraft.position.z
+        );
+
+        // Update player's F-16 mesh - ensure it matches the aircraft data position
+        if (myAircraftMesh) {
+          myAircraftMesh.position.set(
+            myAircraft.position.x,
+            myAircraft.position.y,
+            myAircraft.position.z
+          );
+          myAircraftMesh.rotation.set(
+            myAircraft.rotation.x,
+            myAircraft.rotation.y,
+            myAircraft.rotation.z
+          );
+
+          // Debug: Log positions to verify sync
+          if (Math.random() < 0.01) {
+            // Log occasionally
+            console.log("Aircraft data pos:", myAircraft.position);
+            console.log("Aircraft mesh pos:", myAircraftMesh.position);
+          }
+
+          // Show/hide afterburner based on boost
+          if (
+            myAircraftMesh.userData.flame &&
+            myAircraftMesh.userData.flameCore
+          ) {
+            const isBoosting = keys["shift"];
+            myAircraftMesh.userData.flame.visible = isBoosting;
+            myAircraftMesh.userData.flameCore.visible = isBoosting;
+
+            // Animate flame if boosting
+            if (isBoosting) {
+              const flicker = Math.sin(Date.now() * 0.05) * 0.2 + 1;
+              myAircraftMesh.userData.flame.scale.set(
+                flicker,
+                flicker,
+                flicker
+              );
+              myAircraftMesh.userData.flameCore.scale.set(
+                flicker * 0.8,
+                flicker * 0.8,
+                flicker * 0.8
+              );
+
+              // Create smoke trail when boosting
+              if (Math.random() > 0.7) {
+                const smokeGeometry = new THREE.SphereGeometry(0.5, 8, 8);
+                const smokeMaterial = new THREE.MeshBasicMaterial({
+                  color: 0xaaaaaa,
+                  transparent: true,
+                  opacity: 0.5,
+                });
+                const smoke = new THREE.Mesh(smokeGeometry, smokeMaterial);
+                smoke.position.set(
+                  myAircraft.position.x - 10,
+                  myAircraft.position.y,
+                  myAircraft.position.z
+                );
+                smoke.userData.lifetime = 0;
+                scene.add(smoke);
+                smokeTrails.push(smoke);
+              }
+            }
+          }
+        }
+
+        // Update smoke trails
+        for (let i = smokeTrails.length - 1; i >= 0; i--) {
+          const smoke = smokeTrails[i];
+          smoke.userData.lifetime++;
+          smoke.material.opacity = Math.max(
+            0,
+            0.5 - smoke.userData.lifetime * 0.02
+          );
+          smoke.scale.multiplyScalar(1.05);
+
+          if (smoke.userData.lifetime > 50 || smoke.material.opacity <= 0) {
+            scene.remove(smoke);
+            smokeTrails.splice(i, 1);
+          }
+        }
+
+        // Update bullets
+        for (let i = bulletMeshes.length - 1; i >= 0; i--) {
+          const bullet = bulletMeshes[i];
+          bullet.position.add(bullet.userData.velocity);
+          bullet.userData.lifetime++;
+
+          // Check collision with remote players
+          if (bullet.userData.ownerId === playerId) {
+            for (let pid in playerMeshes) {
+              const playerMesh = playerMeshes[pid];
+              const distance = bullet.position.distanceTo(playerMesh.position);
+
+              if (distance < 5) {
+                sendMessage({
+                  type: "hit",
+                  targetId: pid,
+                  damage: 20,
+                });
+
+                scene.remove(bullet);
+                bulletMeshes.splice(i, 1);
+                break;
+              }
+            }
+          }
+
+          // Remove old bullets
+          if (bullet.userData.lifetime > 300 || bullet.position.y < 0) {
+            scene.remove(bullet);
+            bulletMeshes.splice(i, 1);
+          }
+        }
+
+        updateHUD();
+
+        // Send position update
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          sendMessage({
+            type: "playerUpdate",
+            playerId: playerId,
+            position: myAircraft.position,
+            rotation: myAircraft.rotation,
+            health: myAircraft.health,
+          });
+        }
+      }
+
+      function updateHUD() {
+        document.getElementById("health").textContent = Math.max(
+          0,
+          myAircraft.health
+        );
+        document.getElementById("speed").textContent = Math.round(
+          myAircraft.speed * 100
+        );
+        document.getElementById("altitude").textContent = Math.round(
+          myAircraft.position.y
+        );
+      }
+
+      function gameOver(won) {
+        document.getElementById("gameOver").classList.remove("hidden");
+        const resultText = document.getElementById("resultText");
+
+        if (won) {
+          resultText.textContent = "VICTORY!";
+          resultText.className = "winner";
+        } else {
+          resultText.textContent = "DEFEATED!";
+          resultText.className = "loser";
+        }
+      }
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Update orbit controls if enabled (when in menu/spectating)
+        if (orbitControls.enabled) {
+          orbitControls.update();
+        } else {
+          // Update game physics when playing
+          updatePhysics();
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // Initialize - load model and start game
+      async function init() {
+        // Show loading screen
+        document.getElementById("loadingScreen").classList.remove("hidden");
+        document.getElementById("menu").classList.add("hidden");
+
+        try {
+          // Try to load F-16 model
+          await loadF16Model();
+          console.log("F-16 model loaded successfully");
+        } catch (error) {
+          console.warn("Using fallback procedural model:", error);
+        }
+
+        modelsLoaded = true;
+
+        // Hide loading screen, show menu
+        document.getElementById("loadingScreen").classList.add("hidden");
+        document.getElementById("menu").classList.remove("hidden");
+      }
+
+      // Start initialization and animation
+      init();
+      animate();
+    </script>
+  </body>
+</html>
