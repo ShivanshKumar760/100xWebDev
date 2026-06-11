@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FastAPI Chat</title>
+    <script src="https://tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 h-screen flex flex-col">
+    <div
+      class="container mx-auto max-w-2xl bg-white shadow-md rounded-lg mt-10 flex flex-col h-[80vh]"
+    >
+      <div class="p-4 border-b bg-blue-600 text-white rounded-t-lg">
+        <h1 class="text-xl font-bold">Real-time Chat</h1>
+        <p id="status" class="text-xs text-blue-200">Connecting...</p>
+      </div>
+
+      <ul id="messages" class="flex-1 p-4 overflow-y-auto space-y-2 list-none">
+        <!-- Messages will appear here -->
+      </ul>
+
+      <form id="chat-form" class="p-4 border-t flex gap-2">
+        <input
+          type="text"
+          id="messageText"
+          autocomplete="off"
+          placeholder="Type a message..."
+          class="flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Generate a random ID for this session
+      const client_id = Math.floor(Math.random() * 1000);
+      const ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
+      const messages = document.getElementById("messages");
+      const status = document.getElementById("status");
+
+      ws.onopen = () => {
+        status.innerText = `Connected as Client #${client_id}`;
+        status.classList.replace("text-blue-200", "text-green-200");
+      };
+
+      ws.onmessage = (event) => {
+        const li = document.createElement("li");
+        li.className = "bg-gray-200 p-2 rounded-lg w-fit max-w-[80%]";
+        li.innerText = event.data;
+        messages.appendChild(li);
+        messages.scrollTop = messages.scrollHeight; // Auto-scroll
+      };
+
+      ws.onclose = () => {
+        status.innerText = "Disconnected from server";
+        status.classList.replace("text-green-200", "text-red-300");
+      };
+
+      document.getElementById("chat-form").onsubmit = (e) => {
+        e.preventDefault();
+        const input = document.getElementById("messageText");
+        if (input.value) {
+          ws.send(input.value);
+          input.value = "";
+        }
+      };
+    </script>
+  </body>
+</html>

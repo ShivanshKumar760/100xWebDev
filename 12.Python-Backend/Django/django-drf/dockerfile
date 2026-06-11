@@ -1,0 +1,58 @@
+# -----------------------------
+# Base Image
+# -----------------------------
+FROM python:3.11-slim
+
+# Prevents Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Ensures logs print directly to terminal (important for Docker logs)
+ENV PYTHONUNBUFFERED=1
+
+# -----------------------------
+# Set Working Directory
+# -----------------------------
+WORKDIR /app
+
+# -----------------------------
+# Install system dependencies
+# -----------------------------
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------
+# Install Python dependencies
+# -----------------------------
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# -----------------------------
+# Copy Project Files
+# -----------------------------
+COPY . .
+
+# -----------------------------
+# Expose Django Port
+# -----------------------------
+EXPOSE 8000
+
+# -----------------------------
+# Collect Static Files (optional)
+# -----------------------------
+# RUN python manage.py collectstatic --noinput
+
+# -----------------------------
+# Run Migrations + Start Server
+# Development:
+# -----------------------------
+CMD ["sh", "-c", "python manage.py makemigrations profiles_api && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
+# -----------------------------
+# Production (Gunicorn Example):
+# CMD ["sh", "-c", "python manage.py migrate && gunicorn your_project_name.wsgi:application --bind 0.0.0.0:8000"]
+# -----------------------------
